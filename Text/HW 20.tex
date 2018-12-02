@@ -1,0 +1,682 @@
+\documentclass[a4paper,14pt]{article}
+
+%\includeonly{topics/t2,topics/t3} % компилировать только указанные главы
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\frenchspacing
+%\usepackage{fontspec} 
+%\setmainfont[Ligatures={TeX,Historic}]{Times New Roman}
+
+%%%\usepackage{fancyhdr} % {\tiny  }Колонтитулы 
+%\pagestyle{fancy} 
+%\renewcommand{\headrulewidth}{0mm} % Толщина линейки, отчеркивающей верхний колонтитул 
+%\lfoot{Нижний левый} 
+%\rfoot{Нижний правый} 
+%\rhead{Верхний правый} 
+%\chead{Верхний в центре} 
+%\lhead{Верхний левый} 
+% \cfoot{Нижний в центре} % По умолчанию здесь номер страницы 
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+%\usepackage{ dsfont } % more math fonts!
+%\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+%\renewcommand{\phi}{\ensuremath{\varphi}}
+%\renewcommand{\kappa}{\ensuremath{\varkappa}}
+%\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+%\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+%\renewcommand{\emptyset}{\varnothing}
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумереация формул слева
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{crimeimages/}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+
+
+
+
+
+
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\newcommand{\source}[1]{\small{Источник: #1}}
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+\geometry{left=35mm}
+\geometry{right=15mm}
+%
+%\usepackage{fancyhdr} % Колонтитулы
+% 	\pagestyle{fancy}
+%\renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+% 	\lfoot{Нижний левый}
+% 	\rfoot{Нижний правый}
+% 	\rhead{Верхний правый}
+% 	\chead{Верхний в центре}
+% 	\lhead{Верхний левый}
+%	\cfoot{Нижний в центре} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж
+\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+%\usepackage{soul} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+	unicode=true,           % русские буквы в раздела PDF
+	%	pdftitle={Заголовок},   % Заголовок
+	%	pdfauthor={Автор},      % Автор
+	%	pdfsubject={Тема},      % Тема
+	%	pdfcreator={Создатель}, % Создатель
+	%	pdfproducer={Производитель}, % Производитель
+	%	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+	linkcolor=blue,          % внутренние ссылки
+	citecolor=blue,        % на библиографию
+	filecolor=magenta,      % на файлы
+	urlcolor=ForestGreen           % на URL
+}
+
+
+% \usepackage{csquotes} % Еще инструменты для ссылок
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\usepackage{multicol} % Несколько колонок
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+
+\usepackage{tikz} % Работа с графикой
+% \usepackage{pgfplots}
+% \usepackage{pgfplotstable}
+
+% % % Для работы с report
+%\renewcommand{\chaptername}{Глава}
+
+
+\usepackage{cite} % Работа с библиографией
+%\usepackage[superscript]{cite} % Ссылки в верхних индексах
+%\usepackage[nocompress]{cite} % 
+%\usepackage{csquotes} % Еще инструменты для ссылок
+
+% \usepackage{natbib} %библиография плюс https://ru.wikibooks.org/wiki/LaTeX/%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%B5%D0%B9
+%\bibliographystyle{rmpaps} 
+
+
+%%%% Работа со списками
+%\usepackage{enumitem} %%% дополнительная работа со списками. !а может и неправильно написано — гугли
+\usepackage{paralist}										% compact lists
+
+\renewcommand{\citeleft}{(}
+\renewcommand{\citeright}{)}
+
+\usepackage{adjustbox} 
+\addto\captionsrussian{% Replace "english" with the language you use
+	\renewcommand{\contentsname}%
+	{Table Of Contents}%
+}
+
+\author{Yulia Gurova}
+\title{Tax systems}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+  %  \usepackage{upquote} % Upright quotes for verbatim code
+%    \usepackage{eurosym} % defines \euro
+%    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+%    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+   \usepackage{longtable} % longtable support required by pandoc >1.10
+   \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{hw2}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+
+
+	\thispagestyle{empty}    % +1 - это титульный лист
+	
+	\begin{center}
+		
+		
+		THE RUSSIAN GOVERNMENT \\
+		FEDERAL STATE AUTONOMUS EDUCATIONAL INSTITUTION \\ FOR HIGHER PROFESSIONAL EDUCATION \\ NATIONAL RESEARCH UNIVERSITY \\ ``HIGHER SCHOOL OF ECONOMICS''
+		
+		\large
+		\vspace{2 cm}
+		%	\textsf{
+		%	Факультет экономических наук
+		%	\\ Образовательная программа «Экономика» %}           %ТЕКСТ БЕЗ ЗАСЕЧЕК
+	\end{center}
+	
+	\vspace{2 cm}
+	\begin{center}
+		%	\vspace{13ex}
+		\vspace{1 cm} \textbf{The Analysis of On-screen Movie Kills} \\ \vspace{0.5 cm} Homework Project 2018/2019 
+		
+		
+	\end{center}
+	
+	\vspace{2 cm}
+	
+	\begin{flushright}
+		%	\noindent
+		{ \textbf{The team:} \\ Boris Tseitlin \\ Konstantin Romashchenko \\ Yulia Gurova}
+		
+		\vspace{1 cm}
+		
+		{ \textbf{MSc Program “Data Science” } \\ 1$^{st}$ year \\
+			Faculty of Computer Science }
+	\end{flushright}
+	
+	\begin{center}
+		\vfill
+		Moscow 2018	
+	\end{center}
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	
+	\section{THE CHOICE OF THE DATASET}
+    
+    
+    The dataset that is used for the project contains information about  on-screen deaths in movies. There are 545 movies (more then 100 objects) and 8 characteristics including names, so the dataset meets the requirements. 
+    
+    The sourse for the data is the thematic web-site \href{http://www.moviebodycounts.com/}{moviebodycounts.com}. This dataset was processed and published on \href{https://figshare.com/articles/On_screen_movie_kill_counts_for_hundreds_of_films/889719}{figshare.com}. It was gathered  in accordance with the \href{http://moviebodycounts.proboards.com/thread/6}{rules}, which are published on the web-site. We took several characteristics for the consideration: the year of the film, MPAA rating (Motion Picture Association of America film rating system), genre or genres, the name of the director, the lenth of the film in minutes,  IMDB rating based on user ratings. The main feature that we consider is the number of on-screen deaths in the movie. 
+    
+    The analysis of the data may reveal how the ratings depend on the number of deaths, how this  number is changing with the year of the release and so on. Moreover, genre and length of the film combined with the violence on the screen may give the idea of the age ratings. This is a good set for the classification and clustering problems, as the films are grouped on genres, MPAA ratings which are similar inside the groups, but dissimilar between them. 
+    
+    This study analysis may be the first step to the automation of age rating systems. Moreover it may be helpful in the development of the recommendation systems. And, as watching movies is the common interest of our team, the work with the dataset will inspire us to further conquest in Data Analysis.
+    
+    
+    \newpage
+    
+    \section{K-means clustering}
+    
+ For this part of the task we choose three quantitative features:\textit{ Body\_Count}, the number of on-screen deaths in the movie; \textit{Length\_Minutes}, the length in minutes; \textit{Year}, the year of the release. This choice is restrained as these are the only quantitative features of our dataset. 
+ 
+ \subsection{Preprocessing}
+ First, we normalize (standardize) the features:
+ 
+ \footnotesize
+ \begin{Verbatim}[commandchars=\\\{\}]
+ {\color{incolor}In [{\color{incolor}11}]:}  \PY{k}{def} \PY{n+nf}{normalize}\PY{p}{(}\PY{n}{vec}\PY{p}{)}\PY{p}{:}
+ \PY{k}{\ \ \ \ return} \PY{p}{(}\PY{n}{vec} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{vec}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+ \end{Verbatim}
+ \normalsize
+ 
+Before implementing the clustering methods, we visualize data on all possible pairplots. There are no obvious clusters in two-dimensional visualization. 
+    \begin{center}
+	\adjustimage{max size={0.85\linewidth}{0.9\paperheight}}{output_8_1.png}
+\end{center}
+ 
+
+
+    The clusters might follow the categorical feature when it's used together with quantitative features. A categorical attribute with the least amount of variants we have is MPAA rating, that bounds the age restrictions. We color the graphs with accordance to the ratings to see how they divide our data. 
+                
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_1.png}
+\end{center}
+     
+
+\subsection{K-means implementation}
+
+The first method we apply to find the clusters is k-means at k=5. So we take random initializations of 5 cluster centers and choose the best by k-means criteria from 10 initializations. The sum of squared distances from points to cluster centers: 13.6126. 
+  \footnotesize{  
+    \begin{Verbatim}[commandchars=\\\{\}]
+    {\color{incolor}In [{\color{incolor}16}]:} 
+    \PY{n}{kmeans\PYZus{}k5} \PY{o}{=} \PY{n}{KMeans}\PY{p}{(}\PY{n}{n\PYZus{}clusters}\PY{o}{=}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{init}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{random}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{n\PYZus{}init}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{random\PYZus{}state}\PY{o}{=}\PY{n}{RANDOM\PYZus{}SEED}\PY{p}{)}
+    \PY{n}{kmeans\PYZus{}k5}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{task\PYZus{}df}\PY{p}{)}
+    \PY{n}{task\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{labels\PYZus{}k5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{n}{kmeans\PYZus{}k5}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{task\PYZus{}df}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Sum of squared distances from points to cluster centers, k=5:}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{kmeans\PYZus{}k5}\PY{o}{.}\PY{n}{inertia\PYZus{}}\PY{p}{)}
+    \PY{n}{sns}\PY{o}{.}\PY{n}{pairplot}\PY{p}{(}\PY{n}{task\PYZus{}df}\PY{p}{,} \PY{n}{hue}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{labels\PYZus{}k5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n+nb}{vars}\PY{o}{=}\PY{n}{quant\PYZus{}features}\PY{p}{)}
+    \end{Verbatim}
+} \normalsize
+
+The obtained clusters are following (we visualize them by pairplots). They  don't match to MPAA\_Rating directly, but divide the data into reasonable descriptive categories:
+
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_2.png}
+\end{center}
+ 
+
+
+We would specially distinguish cluster 1 (orange colored), the old films, which are mostly not long and with small amount of deaths. Cluster 3 (red colored) is not large and depicts the films with the highest number of deaths, they differ in length, but are all relatively the new ones. 
+
+Now we take clustering at  k=9 and get a lot of smaller clusters: 
+ 
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_2.png}
+\end{center}
+
+
+Some clusters are obviously inherited from the pevious ones: new cluster 7 (the gray one) follows cluster 3 (with the higest deaths rate), the new cluster 3 (red) follows the discussed cluster 1 (with old films) from the previous graphs. Besides these two there are many small clusters at the main body of the films, overlapping on the most graphs without having patent interpretation. We conclude that 9 clusters are too much for this dataset, and 5 clusters better describe the data: the cluster boundaries were more clear and the reasonably interpretable clusters were the same.
+
+\subsection{Interpretation}
+
+In the rest part of this task we consider the partition with k=5 as it is more reasonable for this dataset. First, we explore, how movies are destributed to clusters, minding their MPAA ratings (the correspondence of the ratings is in application \ref{MPAA}). 
+
+           
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
+\end{center}
+
+The plot shows the amount of movies of each rating in each cluster. For example we see that 165 R movies are in cluster 4. Clusters 0, 2, 4 aggregate the most part of the movies, mostly with R and PG-13 ratings. That may show that we have mostly adult films in the dataset. That is not a surprise due to considered subject. The number of films at the clusters are: 4 - 233,
+0  -  122,
+2  -  119,
+1  -   55,
+3  -   16.
+
+Next we compare the mean values of the features between the clusters. The following barplot shows the correspondence of number of deaths in clusters, separated by ratings. The height of each bar shows the average body count of movies of a certain rating in a cluster. The vertical black bar represents the spread - the highest point shows the maximum, the lowest point shows the minimum.
+
+
+            
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_13_1.png}
+\end{center}
+ 
+
+It's clear that cluster 3 contains the movies with the highest body count, as was supposed in the cluster interpretation. It contains the PG-13 movie with the highest body count in the dataset (836): \textit{"Lord of the Rings: Return of the King"}. The highest point of the black bars shows this movie. 
+
+Next we consider the average length of the movies by clusters: 
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_1.png}
+\end{center}
+ 
+This plot is not very informative. We can see that clusters 0 and 4 are on avearage the shortest ones. And the movies from the cluster 3 (with highest mount of death) are long on average. 
+
+Next we consider the year of the movies by cluster and ratings. This plot has the same structure. 
+
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_15_1.png}
+\end{center}
+ 
+It can be seen that the cluster 1 contains mostly old movies, as was discovered before. Now we can see that it are mostly pre-1980 movies. Cluster 0 contains movies from about  the 90-s.
+And it is interesting that the highest body count movies, captured by cluster 3, are mostly recent - post-2010.
+
+
+
+
+\subsection{Bootstrap}
+
+In this part of the paper we inspect closely two clusters: 0 and 1. As was mentioned, cluster 1 contains mostly old, pre-1980 movies and cluster 0 has movies from about the 90-s.
+
+First, we compare the length and the year, and then we focus on our main feature, the body count. From the scatter plot the difference between the clusters can be clearly seen.
+            
+\begin{center}
+	\adjustimage{max size={0.6\linewidth}{0.9\paperheight}}{output_17_1.png}
+\end{center}
+ 
+
+First, we consider the distribution of our prime feature, the body count, in the two clusters.
+\footnotesize   \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{cluster\PYZus{}0}\PY{p}{[}\PY{n}{target\PYZus{}feature}\PY{p}{]}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{cluster\PYZus{}1}\PY{p}{[}\PY{n}{target\PYZus{}feature}\PY{p}{]}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+\PY{n}{axes} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{sharex}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{sharey}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+
+\PY{n}{sns}\PY{o}{.}\PY{n}{distplot}\PY{p}{(}\PY{n}{cluster\PYZus{}0}\PY{o}{.}\PY{n}{Body\PYZus{}Count}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{distplot}\PY{p}{(}\PY{n}{cluster\PYZus{}1}\PY{o}{.}\PY{n}{Body\PYZus{}Count}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+\normalsize
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_19_2.png}
+\end{center}
+ 
+The parameters of the distributions are listed in the table. The distributions seem to be different but we cannot be sure as the samples are rather small. 
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Parameter} & \textbf{Cluster 0}  & \textbf{Cluster 1}  \\ \hline
+		count & 122.000000 & 55.000000  \\ \hline
+		mean  & 56.795082  & 105.654545 \\ \hline
+		std   & 47.931414  & 87.318323  \\ \hline
+		min   & 1.000000   & 4.000000   \\ \hline
+		25\%  & 20.000000  & 44.500000  \\ \hline
+		50\%  & 42.500000  & 91.000000  \\ \hline
+		75\%  & 87.250000  & 147.000000 \\ \hline
+		max   & 258.000000 & 471.000000 \\ \hline
+	\end{tabular}
+
+We apply bootstrap with 5000 samples to compare the distribution between the clusters. We obtain that  the distributions of Body\_Count really differ between these clusters. They not only have different means, as evident by confidence intervals, but also have different bell shapes. We conclude that the distribution of the feature is approximately Gaussian.
+
+Next we build the 95\% confidence intervals for the grand mean of the feature by using bootstrap. Also we use bootstrap to compare cluster 0 to the grand mean.  We obtain:
+
+\footnotesize
+For cluster 0 \\
+\textbf{pivotal} mean: 56.83192786885246, c.i.: [48.382188750197514, 65.2816669875074] \\
+\textbf{non pivotal} mean: 56.83192786885246, c.i.: [48.90163934426229, 65.55758196721311]
+
+For cluster 1 \\
+\textbf{pivotal} mean:  105.62885818181817, c.i.:  [82.64639614766133, 128.611320215975] \\
+\textbf{non pivotal} mean:  105.62885818181817, c.i.:  [84.01772727272727, 130.05999999999992]
+
+For the grand mean \\
+pivotal 72.15726385321102 +- [64.37419120011303, 79.94033650630901]
+non pivotal 72.15726385321102 +- [64.65105504587156, 80.23775229357797]
+
+\normalsize
+
+Comparison between the grand mean and cluster 0:
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_2.png}
+\end{center}
+We pay attention here to the fact that the bell shape of cluster 0 body count resembles the grand mean bell shape closely.
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_2.png}
+\end{center}
+
+
+    \section{Contingency Table Analysis}
+    \section{PCA: Hidden Factor \& Data visualization}
+    \section{2D regression}
+    
+    \section{Applications}
+    
+\begin{enumerate}
+\item \textbf{MPAA Ratings interpretation. }\label{MPAA}
+Sourse: \href{https://en.wikipedia.org/wiki/Motion_Picture_Association_of_America_film_rating_system#From_M_to_GP_to_PG}{MPAA}
+\begin{itemize}
+\item \textbf{G — General audiences}. All ages admitted. Nothing that would offend parents for viewing by children.
+\item \textbf{PG – Parental Guidance Suggested}. Some material may not be suitable for children. Parents urged to give "parental guidance". May contain some material parents might not like for their young children.
+\item \textbf{M:} Suggested for Mature Audiences – parental discretion advised (before 1984). The same as modern PG. 
+\item \textbf{GP} All Ages Admitted – Parental Guidance Suggested (before 1972). Renamed to PG.
+\item \textbf{PG-13 – Parents Strongly Cautioned}. Some material may be inappropriate for children under 13. Parents are urged to be cautious. Some material may be inappropriate for pre-teenagers.
+\item \textbf{R – Restricted}. Under 17 requires accompanying parent or adult guardian. Contains some adult material. Parents are urged to learn more about the film before taking their young children with them.
+\item \textbf{NC-17 – Adults Only. }No One 17 and Under Admitted. Clearly adult. Children are not admitted.
+\item \textbf{X}. No one under 17 admitted (before 1984). Was renamed to NC-17
+\end{itemize}
+
+\end{enumerate}
+
+
+
+\end{document}
