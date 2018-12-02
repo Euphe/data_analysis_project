@@ -521,7 +521,7 @@ The first method we apply to find the clusters is k-means at k=5. So we take ran
     \end{Verbatim}
 } \normalsize
 
-The obtained clusters are following (we visualize them by pairplots). They  don't match to MPAA\_Rating directly, but divide the data into reasonable descriptive categories:
+The obtained clusters are following (we visualize them by pairplots). They  don't match to MPAA\_Rating directly, but divide the data into reasonable descriptive categories. Sum of squared distances from points to cluster centers, k=5: 13.612553363194289:
 
     \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_2.png}
@@ -529,16 +529,16 @@ The obtained clusters are following (we visualize them by pairplots). They  don'
  
 
 
-We would specially distinguish cluster 1 (orange colored), the old films, which are mostly not long and with small amount of deaths. Cluster 3 (red colored) is not large and depicts the films with the highest number of deaths, they differ in length, but are all relatively the new ones. 
+We would specially distinguish cluster 3 (purple colored), the old films, which are mostly not long and with small amount of deaths. Cluster 4 (yellow colored) is not large and depicts the films with the highest number of deaths, they differ in length, but are all relatively the new ones. 
 
-Now we take clustering at  k=9 and get a lot of smaller clusters: 
+Now we take clustering at  k=9 and get a lot of smaller clusters. Sum of squared distances from points to cluster centers, k=9: 10.079065699105357: 
  
     \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_2.png}
 \end{center}
 
 
-Some clusters are obviously inherited from the pevious ones: new cluster 7 (the gray one) follows cluster 3 (with the higest deaths rate), the new cluster 3 (red) follows the discussed cluster 1 (with old films) from the previous graphs. Besides these two there are many small clusters at the main body of the films, overlapping on the most graphs without having patent interpretation. We conclude that 9 clusters are too much for this dataset, and 5 clusters better describe the data: the cluster boundaries were more clear and the reasonably interpretable clusters were the same.
+Some clusters are obviously inherited from the pevious ones: new cluster 8 (the pink one) follows cluster 4 (with the highest deaths rate), the new cluster 0 (red) follows the discussed cluster 3 (with old films) from the previous graphs. Besides these two there are many small clusters at the main body of the films, overlapping on the most graphs without having patent interpretation. We conclude that 9 clusters are too much for this dataset, and 5 clusters better describe the data: the cluster boundaries were more clear and the reasonably interpretable clusters were the same.
 
 \subsection{Interpretation}
 
@@ -549,11 +549,12 @@ In the rest part of this task we consider the partition with k=5 as it is more r
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
 \end{center}
 
-The plot shows the amount of movies of each rating in each cluster. For example we see that 165 R movies are in cluster 4. Clusters 0, 2, 4 aggregate the most part of the movies, mostly with R and PG-13 ratings. That may show that we have mostly adult films in the dataset. That is not a surprise due to considered subject. The number of films at the clusters are: 4 - 233,
-0  -  122,
-2  -  119,
-1  -   55,
-3  -   16.
+The plot shows the amount of movies of each rating in each cluster. For example we see that 165 R movies are in cluster 2. Clusters 0, 2, 1 aggregate the most part of the movies, mostly with R and PG-13 ratings. That may show that we have mostly adult films in the dataset. That is not a surprise due to considered subject. The number of films at the clusters are: 
+2  -  233,
+1  -  122,
+0  -  119,
+3  -   55,
+4  -   16.
 
 Next we compare the mean values of the features between the clusters. The following barplot shows the correspondence of number of deaths in clusters, separated by ratings. The height of each bar shows the average body count of movies of a certain rating in a cluster. The vertical black bar represents the spread - the highest point shows the maximum, the lowest point shows the minimum.
 
@@ -564,14 +565,14 @@ Next we compare the mean values of the features between the clusters. The follow
 \end{center}
  
 
-It's clear that cluster 3 contains the movies with the highest body count, as was supposed in the cluster interpretation. It contains the PG-13 movie with the highest body count in the dataset (836): \textit{"Lord of the Rings: Return of the King"}. The highest point of the black bars shows this movie. 
+It's clear that cluster 4 contains the movies with the highest body count, as was supposed in the cluster interpretation. It contains the PG-13 movie with the highest body count in the dataset (836): \textit{"Lord of the Rings: Return of the King"}. The highest point of the black bars shows this movie. 
 
 Next we consider the average length of the movies by clusters: 
 \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_1.png}
 \end{center}
  
-This plot is not very informative. We can see that clusters 0 and 4 are on avearage the shortest ones. And the movies from the cluster 3 (with highest mount of death) are long on average. 
+This plot is not very informative. We can see that clusters 1 and 2 are on average the shortest ones. And the movies from the cluster 3 (with highest mount of death) are long on average. 
 
 Next we consider the year of the movies by cluster and ratings. This plot has the same structure. 
 
@@ -579,10 +580,10 @@ Next we consider the year of the movies by cluster and ratings. This plot has th
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_15_1.png}
 \end{center}
  
-It can be seen that the cluster 1 contains mostly old movies, as was discovered before. Now we can see that these are mostly pre-1980 movies. Cluster 0 contains movies from about  the 90-s.
-And it is interesting that the highest body count movies, captured by cluster 3, are mostly recent - post-2010.
+It can be seen that the cluster 3 contains mostly old movies, as was discovered before. Now we can see that these are mostly pre-1980 movies. Cluster 1 contains movies from about  the 90-s.
+And it is interesting that the highest body count movies, captured by cluster 4, are mostly recent - post-2010.
 
-
+Moreover, from this diagram it can be seen that for some ratings there are films only from one-two clusters, mostly from the third one, capturing old films. These ratings were used in previous years, but then were renamed or changed. As there are only several such movies in our dataset, we do not think it influence any results.
 
 
 \subsection{Bootstrap}
@@ -703,7 +704,369 @@ We pay attention here to the fact that the bell shape of cluster 0 body count re
 
 
     \section{Contingency Table Analysis}
+    
+In this part of the paper we consider the contingency tables. We take three nominal features from the dataset, producing them by splitting from the quantitative features. Consider the histograms for IMDB\_Rating, Year and Body\_count:
+
+\begin{multicols}{2}
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4.png}
+	IMDB\_Rating
+\end{center}
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5.png}
+	Year
+\end{center}
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_6.png}
+	 Body\_count
+\end{center}
+
+\end{multicols}
+
+To make the features we split all three attributes with reasonable visible thresholds, shown on the graphs. We take 4 intervals for each attribute. For the IMDB rating we choose 6, 7 and 8 as thresholds, as they are caught by the histogram. It can be really well interpreted as very bad, bad, good and very good films. For the Year we choose 1980, 1990, 2000, 2005 as thresholds. In the previous part we had the cluster of old films, which appeared before 1980, and we can use  it here to set the thresholds. All the others were chosen to make the groups approximately equal. For the on-screen deaths we have chosen 20, 50, 120. 
+
+\footnotesize
+    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{categorize\PYZus{}func}\PY{p}{(}\PY{n}{split\PYZus{}points}\PY{p}{)}\PY{p}{:}
+    \PY{k}{def} \PY{n+nf}{categorize}\PY{p}{(}\PY{n}{param}\PY{p}{)}\PY{p}{:}
+        \PY{n}{split\PYZus{}points}\PY{o}{.}\PY{n}{sort}\PY{p}{(}\PY{p}{)}
+        \PY{k}{if} \PY{p}{(}\PY{n}{param} \PY{o}{\PYZlt{}} \PY{n}{split\PYZus{}points}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZlt{}}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{split\PYZus{}points}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+        \PY{k}{for} \PY{n}{index} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{split\PYZus{}points}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{param} \PY{o}{\PYZlt{}} \PY{n}{split\PYZus{}points}\PY{p}{[}\PY{n}{index} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{]}\PY{p}{:}
+                \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{≥}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{split\PYZus{}points}\PY{p}{[}\PY{n}{index}\PY{p}{]}\PY{p}{)}
+        \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{≥}\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{split\PYZus{}points}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+    \PY{k}{return} \PY{n}{categorize}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{bodies} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Body\PYZus{}Count}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{categorize\PYZus{}func}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{200}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\PY{n}{imdb\PYZus{}rating} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{IMDB\PYZus{}Rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{categorize\PYZus{}func}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{5.0}\PY{p}{,} \PY{l+m+mf}{7.0}\PY{p}{,} \PY{l+m+mf}{8.0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\PY{n}{year} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Year}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{n}{categorize\PYZus{}func}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1990}\PY{p}{,} \PY{l+m+mi}{2000}\PY{p}{,} \PY{l+m+mi}{2005}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+  
+  \end{Verbatim}
+ 
+\normalsize
+
+Next we build the contingency tables for the determined features:
+
+\footnotesize
+    \begin{Verbatim}[commandchars=\\\{\}]    
+ \PY{n}{contingency\PYZus{}table\PYZus{}imdb\PYZus{}bodies} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{bodies}\PY{p}{,} \PY{n}{imdb\PYZus{}rating}\PY{p}{,} \PY{n}{margins}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{margins\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+ \PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{bodies}\PY{p}{,} \PY{n}{year}\PY{p}{,} \PY{n}{margins}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{margins\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}    
+\end{Verbatim}
+
+   
+
+\begin{table}[]
+	\begin{tabular}{lllllll}
+		IMDB\_Rating  & \textless{}6.0 & $\geq$6.0 & $\geq$7.0 & $\geq$8.0 & Total & Total \\
+		Body\_Count   &                &      &      &      &       &       \\
+		\textless{}20 & 28             & 65   & 47   & 22   & 162   & 162   \\
+		$\geq$120          & 14             & 20   & 44   & 14   & 92    & 92    \\
+		$\geq$20           & 28             & 40   & 39   & 23   & 130   & 130   \\
+		$\geq$50           & 39             & 49   & 52   & 21   & 161   & 161   \\
+		Total         & 109            & 174  & 182  & 80   & 545   & 545  
+	\end{tabular}
+\end{table}
+
+\begin{table}[]
+	\begin{tabular}{lllllll}
+		Year          & \textless{}1980 & $\geq$1980 & $\geq$1990 & $\geq$2000 & $\geq$2005 & Total \\
+		Body\_Count   &                 &       &       &       &       &       \\
+		\textless{}20 & 12              & 14    & 39    & 44    & 53    & 162   \\
+		$\geq$120          & 20              & 10    & 13    & 24    & 25    & 92    \\
+		$\geq$20           & 10              & 23    & 48    & 19    & 30    & 130   \\
+		$\geq$50           & 23              & 25    & 39    & 30    & 44    & 161   \\
+		Total         & 65              & 72    & 139   & 117   & 152   & 545  
+	\end{tabular}
+\end{table}
+  \normalsize 
+   
+ The first table shows the joint distribution of the IMDB rating and the number of deaths.  The second shows the   joint distribution between the Year and the number of deaths.
+ 
+ \subsection{Relative probabilities tables}
+ 
+ To see the relative probabilities we build the relative frequency tables over the same features: 
+ 
+ 
+     \begin{Verbatim}[commandchars=\\\{\}]
+ \PY{k}{def} \PY{n+nf}{make\PYZus{}relative}\PY{p}{(}\PY{n}{probabilites\PYZus{}df}\PY{p}{)}\PY{p}{:}
+     \PY{n}{res} \PY{o}{=} \PY{n}{probabilites\PYZus{}df}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+     \PY{n}{res}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+     \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{res}\PY{p}{:}
+         \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{index}\PY{p}{:}
+             \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{/}\PY{o}{=} \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]}
+     \PY{k}{return} \PY{n}{res}
+ 
+ \PY{k}{def} \PY{n+nf}{normalize}\PY{p}{(}\PY{n}{contingency\PYZus{}df}\PY{p}{)}\PY{p}{:}
+     \PY{n}{res} \PY{o}{=} \PY{n}{contingency\PYZus{}df}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+     \PY{n}{res} \PY{o}{=} \PY{n}{res}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{float}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+     \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{res}\PY{p}{:}
+         \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{index}\PY{p}{:}
+             \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{/}\PY{o}{=} \PY{n}{contingency\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+     \PY{k}{return} \PY{n}{res}
+ make_relative(normalize(contingency_table_imdb_bodies)) * 100
+ \end{Verbatim}
+   \normalsize 
+
+
+
+The table for the rating and the number of deaths: 
+\\
+\footnotesize
+
+\begin{tabular}{lllll}
+	IMDB\_Rating  & \textless{}6.0 & \geq 6.0      & \geq 7.0      & \geq 8.0      \\
+	Body\_Count   &                &           &           &           \\
+	\textless{}20 & 17.283951      & 40.123457 & 29.012346 & 13.580247 \\
+\geq 20           & 21.538462      & 30.769231 & 30.000000 & 17.692308 \\
+	\geq 50           & 24.223602      & 30.434783 & 32.298137 & 13.043478 \\
+\geq 120          & 15.217391      & 21.739130 & 47.826087 & 15.217391 \\        
+\end{tabular}
+\\
+\normalsize
+
+We can conclude  that the film with more than 200 bodies probably will be well appreciated: it has probability nearly 48\% to have 7 and 22\% to have 6, while the film with <20 deaths will most probably have 6 (40\%) and less probably 7 (29\%). 
+ 
+The table for the year and the number of deaths: 
+\\
+\footnotesize
+
+\begin{tabular}{llllll}
+	Year          & \textless{}1980 & \geq 1980     & \geq 1990     & \geq 2000     & \geq 2005     \\
+	Body\_Count   &                 &           &           &           &           \\
+	\textless{}20 & 7.407407        & 8.641975  & 24.074074 & 27.160494 & 32.716049 \\
+	\geq 20           & 7.692308        & 17.692308 & 36.923077 & 14.615385 & 23.076923 \\
+	\geq 50           & 14.285714       & 15.527950 & 24.223602 & 18.633540 & 27.329193 \\
+	\geq 120          & 21.739130       & 10.869565 & 14.130435 & 26.086957 & 27.173913 \\
+\end{tabular}
+\\
+\normalsize
+
+We see that if movie has high amount of deaths it is most probably the new one of very old one. And, as we have much more new films in the dataset, the probability for each cathegory of deaths grows with the year (except one cell). 
+   
+ \subsection{Quetelet index tables} 
+   
+Now we build Quetelet index tables:
+\footnotesize
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{make\PYZus{}quetelet}\PY{p}{(}\PY{n}{probabilites\PYZus{}df}\PY{p}{)}\PY{p}{:}
+    \PY{n}{res} \PY{o}{=} \PY{n}{probabilites\PYZus{}df}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+    \PY{n}{res}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+    \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{res}\PY{p}{:}
+        \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{index}\PY{p}{:}
+            \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{/} \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PYZbs{}
+                \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\PY{k}{return} \PY{n}{res}
+make_quetelet(normalize(contingency_table_imdb_bodies)) * 100
+make_quetelet(normalize(contingency_table_year_bodies)) * 100
+        \end{Verbatim}
+
+   \begin{tabular}{lllll}
+   	IMDB\_Rating  & \textless{}6.0 & $\geq$6.0       & $\geq$7.0       & $\geq$8.0       \\
+   	Body\_Count   &                &            &            &            \\
+   	\textless{}20 & -13.580247     & 25.674046  & -13.122371 & -7.484568  \\
+   	$\geq$120          & -23.913043     & -31.909045 & 43.215480  & 3.668478   \\
+   	$\geq$20           & 7.692308       & -3.625111  & -10.164835 & 20.528846  \\
+   	$\geq$50           & 21.118012      & -4.672664  & -3.283052  & -11.141304 \\
+   \end{tabular}
+   
+     \normalsize 
+   
+ The table shows the relative probability compared to the average.   We can conclude that Films that have 120 or more bodies are more appreciated: they have odds to have rating more than 8.0 $\approx$4\% more than average and chances that film will have rating less than 6.0 is $\approx$23\% less than average
+   
+\footnotesize
+
+ \begin{tabular}{llllll}
+ 	Year          & \textless{}1980 & $\geq$1980      & $\geq$1990      & $\geq$2000      & $\geq$2005      \\
+ 	Body\_Count   &                 &            &            &            &            \\
+ 	\textless{}20 & -37.891738      & -34.585048 & -5.608846  & 26.516830  & 17.304256  \\
+ 	$\geq$120          & 82.274247       & -17.723430 & -44.596497 & 21.516165  & -2.567220  \\
+ 	$\geq$20           & -35.502959      & 33.920940  & 44.770338  & -31.919790 & -17.257085 \\
+ 	$\geq$50           & 19.780220       & 17.537957  & -5.022566  & -13.202739 & -2.010461  \\
+ \end{tabular}  
+   
+\normalsize 
+
+This is an  quetelet table for Year and the number of deaths. We can conclude that the films with the highest amount of deaths have probability $\approx$82\% more then average to be released before 1980. At the same time films with less then 20 deaths are most probable released after 2000. 
+
+
+\subsection{Chi-square \& Quetelet index }
+
+We apply Pearson's chi-squared test to measure the correlation between two variables. The value is the same as Summary Quetelet index. It shows the average relative increase in the prediction of the number ofthe number of deaths in the movie, when the year or the IMDB rating becomes known.
+
+First, we find expected number of films in each category in assumption of independence of features. Also we find number of degrees of freedom. Let's consider the Year and the Body\_Count:
+
+   \footnotesize \begin{Verbatim}[commandchars=\\\{\}]
+    \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}
+\PY{n}{exp\PYZus{}values\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{expected\PYZus{}values}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}
+\PY{n}{degrees\PYZus{}of\PYZus{}freedom\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{ddof\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies}\PY{o}{.}\PY{n}{size} \PY{o}{\PYZhy{}} \PY{n}{degrees\PYZus{}of\PYZus{}freedom\PYZus{}year\PYZus{}bodies} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
+\end{Verbatim} 
+\normalsize
+
+The tables for observed frequencies and expected under the independence condition:
+
+\footnotesize \begin{tabular}{llllll}
+	Year          & \textless{}1980 & $\geq$1980 & $\geq$1990 & $\geq$2000 & $\geq$2005 \\
+	Body\_Count   &                 &       &       &       &       \\
+	\textless{}20 & 12              & 14    & 39    & 44    & 53    \\
+	$\geq$120          & 20              & 10    & 13    & 24    & 25    \\
+	$\geq$20           & 10              & 23    & 48    & 19    & 30    \\
+	$\geq$50           & 23              & 25    & 39    & 30    & 44    \\
+\end{tabular} \normalsize
+\footnotesize \begin{tabular}{llllll}
+	Year          & \textless{}1980 & $\geq$1980     & $\geq$1990     & $\geq$2000     & $\geq$2005     \\
+	Body\_Count   &                 &           &           &           &           \\
+	\textless{}20 & 19.321101       & 21.401835 & 41.317431 & 34.777982 & 45.181651 \\
+	$\geq$120          & 10.972477       & 12.154128 & 23.464220 & 19.750459 & 25.658716 \\
+	$\geq$20           & 15.504587       & 17.174312 & 33.155963 & 27.908257 & 36.256881 \\
+	$\geq$50           & 19.201835       & 21.269725 & 41.062385 & 34.563303 & 44.902752 \\
+\end{tabular} \normalsize
+
+The obtained degree of freedom for $\chi^2$ test is 12.
+
+The $\chi^2$ test for the hypothesis of independence between the year and number of bodies:
+
+    \footnotesize \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}184}]:} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{chisquare}\PY{p}{(}\PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,} \PY{n}{expected\PYZus{}values}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,}
+\PY{n}{ddof}\PY{o}{=}\PY{n}{ddof\PYZus{}year\PYZus{}bodies}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}
+\end{Verbatim} 
+\normalsize
+
+We can see that critical pvalue is less than $10^{-4}$. So we can reject the hypothesis of independence between the year and the number of deaths in the movie with level of confidence 99.99%.
+
+
+Now consider the same tables for the other feature, IMDB rating, with the number of bodies. Observed frequencies and expected under the independence condition:
+
+\footnotesize \begin{tabular}{lllll}
+	IMDB\_Rating  & \textless{}6.0 & $\geq$6.0 & $\geq$7.0 & $\geq$8.0 \\
+	Body\_Count   &                &      &      &      \\
+	\textless{}20 & 28             & 65   & 47   & 22   \\
+	$\geq$120          & 14             & 20   & 44   & 14   \\
+	$\geq$20           & 28             & 40   & 39   & 23   \\
+	$\geq$50           & 39             & 49   & 52   & 21   \\
+\end{tabular}
+ \normalsize
+\footnotesize \begin{tabular}{lllll}
+	MDB\_Rating   & \textless{}6.0 & $\geq$6.0      & $\geq$7.0      & $\geq$8.0      \\
+	Body\_Count   &                &           &           &           \\
+	\textless{}20 & 32.4           & 51.721101 & 54.099083 & 23.779817 \\
+	$\geq$120          & 18.4           & 29.372477 & 30.722936 & 13.504587 \\
+	$\geq$20           & 26.0           & 41.504587 & 43.412844 & 19.082569 \\
+	$\geq$50           & 32.2           & 51.401835 & 53.765138 & 23.633028 \\
+\end{tabular}
+ \normalsize
+
+The number of degrees of freedom is 9, and it is expectedly less than in previous case as we have less categories for rating. 
+
+The $\chi^2$ test results for the hypothesis of independence between the IMDB rating and number of bodies:
+
+\footnotesize \begin{Verbatim}[commandchars=\\\{\}]
+ Power\_divergenceResult(statistic=18.231013449960972, pvalue=0.03258602359739147)
+\end{Verbatim} 
+\normalsize
+
+  The critical pvalue here is about 3\%. So we can reject the hypothesis of
+independence with level of confidence 95\%, but we cannot reject the
+hypothesis with level of confidence 97\% or higher.
+
+
+Now we compute chi-square summary quetelet index tables for both features:
+\\
+
+\footnotesize \begin{tabular}{lllll} \hline
+	IMDB\_Rating  & \textless{}6.0 & Total     & $\geq$6.0      & $\geq$7.0      \\ \hline
+	Body\_Count   &                &           &           &           \\
+	\textless{}20 & -3.802469      & 5.071541  & 16.688130 & -6.167515 \\
+	Total         & 3.239576       & 18.231013 & 6.566671  & 7.175824  \\
+	$\geq$120          & -3.347826      & 9.798763  & -6.381809 & 19.014811 \\
+	$\geq$20           & 2.153846       & 1.461151  & -1.450044 & -3.964286 \\
+	$\geq$50           & 8.236025       & 1.899559  & -2.289605 & -1.707187 
+\end{tabular} 
+\normalsize
+\\
+\
+
+\footnotesize \begin{tabular}{lllllll} \hline
+	Year          & \textless{}1980 & Total     & $\geq$1980     & $\geq$1990     & $\geq$2000     & $\geq$2005     \\ \hline
+	Body\_Count   &                 &           &           &           &           &           \\
+	\textless{}20 & -4.547009       & 9.262296  & -4.841907 & -2.187450 & 11.667405 & 9.171256  \\
+	Total         & 12.906996       & 39.298444 & 5.572056  & 11.545967 & 6.805703  & 2.467722  \\
+	$\geq$120          & 16.454849       & 13.407037 & -1.772343 & -5.797545 & 5.163880  & -0.641805 \\
+	$\geq$20           & -3.550296       & 14.499397 & 7.801816  & 21.489762 & -6.064760 & -5.177126 \\
+	$\geq$50           & 4.549451        & 2.129715  & 4.384489  & -1.958801 & -3.960822 & -0.884603 
+\end{tabular} 
+\normalsize
+\\
+The quetelet index is the sum of the values in the table. We compute it to make sure that it is equal to $\chi^2$ statistics. 
+
+ 
+   
     \section{PCA: Hidden Factor \& Data visualization}
+    
+In this part of the paper we consider the principal component analysis. we choose three features to take into consederation in tерш part. First one is the Body\_Count, as the main feature of interest. The second one is Year, as we know from the previous analysis that they are well connected. The third one is IMDB rating. 
+
+First we normalize the features. There are two ways of normalization: by standard deviation and by range:
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{normalize\PYZus{}range}\PY{p}{(}\PY{n}{vec}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{p}{(}\PY{n}{vec} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{vec}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\PY{k}{def} \PY{n+nf}{normalize\PYZus{}std}\PY{p}{(}\PY{n}{vec}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{p}{(}\PY{n}{vec} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{vec}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+Recall the plots of joint and self distributions of the features: 
+
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_1_4.png}
+\end{center}
+    
+First we apply PCA and inspect the data scatter explained by each PC. We apply PCA to data centered and normalized by range, as proper PCA application requires data to be on the same scale. The 	
+supplementary functions may be found in the Applications.
+
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{pc\PYZus{}range} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{p}{)}
+\PY{n}{pc\PYZus{}range}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{task\PYZus{}df\PYZus{}normalized\PYZus{}range}\PY{p}{)}
+\PY{n}{scatter} \PY{o}{=} \PY{n}{data\PYZus{}scatter}\PY{p}{(}\PY{n}{task\PYZus{}df\PYZus{}normalized\PYZus{}range}\PY{p}{)}
+\PY{n}{contibs} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{n}{pc\PYZus{}contrib}\PY{p}{(}\PY{n}{s}\PY{p}{)} \PY{k}{for} \PY{n}{s} \PY{o+ow}{in} \PY{n}{pc\PYZus{}range}\PY{o}{.}\PY{n}{singular\PYZus{}values\PYZus{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{contibs\PYZus{}rel} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{Series}\PY{p}{(}\PY{p}{[}\PY{n}{pc\PYZus{}contrib\PYZus{}rel}\PY{p}{(}\PY{n}{s}\PY{p}{,} \PY{n}{scatter}\PY{p}{)} \PY{k}{for} \PY{n}{s} \PY{o+ow}{in} \PY{n}{pc\PYZus{}range}\PY{o}{.}\PY{n}{singular\PYZus{}values\PYZus{}}\PY{p}{]}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Data scatter}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{scatter}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Contributions}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{contibs}\PY{p}{,} \PY{n}{contibs\PYZus{}rel}\PY{p}{)}
+
+\PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+\PY{n}{axes} \PY{o}{=} \PY{n}{fig}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{sharex}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Raw PC contribution}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{barplot}\PY{p}{(}\PY{n}{contibs}\PY{o}{.}\PY{n}{index}\PY{p}{,} \PY{n}{contibs}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Relative PC contribution, }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{barplot}\PY{p}{(}\PY{n}{contibs\PYZus{}rel}\PY{o}{.}\PY{n}{index}\PY{p}{,} \PY{n}{contibs\PYZus{}rel}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    The results of the implication of principal components are the following.
+   The contributions of the components to the explanation of the variance in distribution are:
+
+\begin{tabular}{lll}
+	\# of Component & Raw ccontribution                     & Relative contribution \\ \hline
+	0            & 21.672266                             & 0.545363              \\
+	1            & 11.444299                             & 0.287985              \\
+	2            & 6.622589  & 0.166651             
+\end{tabular}
+
+So, the first PC explains 55\% of data scatter, the second one explains 29\%, the third one 17\%. The diagram illustrates the numbers from the table.
+
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_7_2_4.png}
+\end{center}
+
+\subsection{Visualization}
+
+We will use cluster labels from homework 1 to see how PCA helps vizualize them. So, we add the clusters (for k=5) into the set. 
+	
+
+    
     \section{2D regression}
     
     \section{Applications}
@@ -725,5 +1088,5 @@ Sourse: \href{https://en.wikipedia.org/wiki/Motion_Picture_Association_of_Americ
 \end{enumerate}
 
 
-
+ 
 \end{document}
