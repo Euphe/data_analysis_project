@@ -1,7 +1,0 @@
-\select@language {russian}
-\contentsline {section}{\numberline {1}THE CHOICE OF THE DATASET}{4}{section.1}
-\contentsline {section}{\numberline {2}K-means clustering}{5}{section.2}
-\contentsline {section}{\numberline {3}Cluster Interpretation}{5}{section.3}
-\contentsline {section}{\numberline {4}Contingency Table Analysis}{5}{section.4}
-\contentsline {section}{\numberline {5}PCA: Hidden Factor \& Data visualization}{5}{section.5}
-\contentsline {section}{\numberline {6}2D regression}{5}{section.6}
