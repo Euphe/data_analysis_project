@@ -548,9 +548,10 @@ For the rest of this task we consider the partition with k=5. First we explore h
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
 \end{center}
 
-The plot shows the amount of movies of each rating in each cluster. For example we see that 165 R movies are in cluster 2. Clusters 0, 1, 2 aggregate the most part of the movies, mostly with R and PG-13 ratings. That may show that we have mostly adult films in the dataset. That is not a surprise due to considered subject. The number of films at the clusters are: 2 - 233,
-0  -  122,
-1  -  119,
+The plot shows the amount of movies of each rating in each cluster. For example we see that 165 R movies are in cluster 2. Clusters 0, 1, 2 aggregate the most part of the movies, mostly with R and PG-13 ratings. That may show that we have mostly adult films in the dataset. That is not a surprise due to considered subject. The number of films at the clusters are: 
+2 - 233,
+1  -  122,
+0  -  119,
 3  -   55,
 4  -   16.
 
@@ -586,16 +587,16 @@ And it is interesting that the highest body count movies, captured by cluster 4,
 
 \subsection{Bootstrap}
 
-In this part of the paper we inspect two clusters: 0 and 1. As was mentioned, cluster 1 contains mostly old, pre-1980 movies and cluster 0 has movies from about the 90-s.
+In this part of the paper we inspect two clusters: 1 and 3. As was mentioned, cluster 3 contains mostly old, pre-1980 movies and cluster 1 has movies from the 90-s.
 
-First, we compare the length and the year, and then we focus on our main feature, the body count. From the scatter plot the difference between the clusters can be clearly seen.
+First, we consider length and release year, and then we focus on our main feature, the body count. From the scatter plot the difference between the clusters can be clearly seen.
             
 \begin{center}
 	\adjustimage{max size={0.6\linewidth}{0.9\paperheight}}{output_17_1.png}
 \end{center}
  
 
-First, we consider the distribution of our prime feature, the body count, in the two clusters.
+We inspect the distribution of our primary feature, body count, in the two clusters.
 \footnotesize   \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}48}]:}
 \PY{n+nb}{print}\PY{p}{(}\PY{n}{cluster\PYZus{}0}\PY{p}{[}\PY{n}{target\PYZus{}feature}\PY{p}{]}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}\PY{p}{)}
@@ -612,9 +613,11 @@ First, we consider the distribution of our prime feature, the body count, in the
 \end{center}
  
 The parameters of the distributions are listed in the table. The distributions seem to be different but we cannot be sure as the samples are rather small. 
+
+\begin{center}
 	\begin{tabular}{|l|l|l|}
 		\hline
-		\textbf{Parameter} & \textbf{Cluster 0}  & \textbf{Cluster 1}  \\ \hline
+		\textbf{Parameter} & \textbf{Cluster 1}  & \textbf{Cluster 3}  \\ \hline
 		count & 122.000000 & 55.000000  \\ \hline
 		mean  & 56.795082  & 105.654545 \\ \hline
 		std   & 47.931414  & 87.318323  \\ \hline
@@ -624,12 +627,28 @@ The parameters of the distributions are listed in the table. The distributions s
 		75\%  & 87.250000  & 147.000000 \\ \hline
 		max   & 258.000000 & 471.000000 \\ \hline
 	\end{tabular}
-    \begin{center}
+\end{center}
+
+To compare the distribution between the clusters we apply bootstrap in both pivotal and non-pivotal versions with 5000 samples. We obtain that  the distributions of Body\_Count really differ between these clusters. They not only have different means, as evident by confidence intervals, but also have different bell shapes. 
+
+We provide the following histogram plots for bootstrap sample means. Green lines show pivotal $95\%$ confidence intervals, red lines show $95\%$ non-pivotal confidence intervals. It it interesting that pivotal and non-pivotal confidence intervals are nearly identical. From that we conclude that the distribution of the feature is approximately Gaussian.
+
+
+\begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_2.png}
 \end{center}
-We apply bootstrap with 5000 samples to compare the distribution between the clusters. We obtain that  the distributions of Body\_Count really differ between these clusters. They not only have different means, as evident by confidence intervals, but also have different bell shapes. We conclude that the distribution of the feature is approximately Gaussian.
 
-The code for bootstrap implication and the confidence intervals is below. We use pivotal and non-pivotal bootstrap for the confidence intervals. It can be seen from the graphs, that they are almost coincide, so the destributian of the feature is close to Gaussian.
+\begin{center}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Parameter} & \textbf{Cluster 1}  & \textbf{Cluster 3}  \\ \hline
+		mean & 56.844 & 105.385 \\ \hline
+		pivotal & (48.317, 65.371) & (82.949, 127.823)  \\ \hline
+		non-pivotal & (48.474, 65.590)  & (83.672, 128.711)  \\ \hline
+	\end{tabular}
+\end{center}
+
+The code for bootstrap implementation and the confidence intervals is below. We use pivotal and non-pivotal bootstrap for the confidence intervals.
 
 \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}91}]:} \PY{k}{def} \PY{n+nf}{bootstrap\PYZus{}sample}\PY{p}{(}\PY{n}{vec}\PY{p}{,} \PY{n}{size}\PY{p}{)}\PY{p}{:}
@@ -676,18 +695,16 @@ The code for bootstrap implication and the confidence intervals is below. We use
 
 Next we build the 95\% confidence intervals for the grand mean of the feature by using bootstrap. Also we use bootstrap to compare cluster 0 to the grand mean.  We obtain:
 
-\footnotesize
-For cluster 0 \\
-\textbf{pivotal} mean: 56.83192786885246, c.i.: [48.382188750197514, 65.2816669875074] \\
-\textbf{non pivotal} mean: 56.83192786885246, c.i.: [48.90163934426229, 65.55758196721311]
 
-For cluster 1 \\
-\textbf{pivotal} mean:  105.62885818181817, c.i.:  [82.64639614766133, 128.611320215975] \\
-\textbf{non pivotal} mean:  105.62885818181817, c.i.:  [84.01772727272727, 130.05999999999992]
-
-For the grand mean \\
-pivotal 72.15726385321102 +- [64.37419120011303, 79.94033650630901]
-non pivotal 72.15726385321102 +- [64.65105504587156, 80.23775229357797]
+\begin{center}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Parameter} & \textbf{Cluster 1}  & \textbf{Grand mean}  \\ \hline
+		mean & 56.844 & 72.157 \\ \hline
+		pivotal & (48.317, 65.371) & (64.374, 79.340)  \\ \hline
+		non-pivotal & (48.474, 65.590)  & (64.65, 80.238)  \\ \hline
+	\end{tabular}
+\end{center}
 
 \normalsize
 
@@ -695,7 +712,7 @@ Comparison between the grand mean and cluster 0:
     \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_2.png}
 \end{center}
-We pay attention here to the fact that the bell shape of cluster 0 body count resembles the grand mean bell shape closely.
+We pay attention here to the fact that the bell shape of cluster 1 body count resembles the grand mean bell shape closely.
     \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_2.png}
 \end{center}
