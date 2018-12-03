@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2015.11.14)  3 DEC 2018 22:42
+This is XeTeX, Version 3.14159265-2.6-0.99992 (MiKTeX 2.9 64-bit) (preloaded format=xelatex 2015.11.14)  3 DEC 2018 22:55
 entering extended mode
 **"HW 20.tex"
 ("HW 20.tex"
@@ -1388,8 +1388,8 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 676.
  [12]
-File: output_21_2.png Graphic file (type QTm)
- <use  "output_21_2.png" >
+File: output_22_2.png Graphic file (type QTm)
+ <use  "output_22_2.png" >
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 716.
 Package babel Info: Redefining russian shorthand "~
@@ -1399,121 +1399,117 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 716.
  [13]
-File: output_22_2.png Graphic file (type QTm)
-
-<use  "output_22_2.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 723.
+(babel)             in language  on input line 721.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 723.
+(babel)             in language  on input line 721.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 727.
+(babel)             in language  on input line 725.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 727.
+(babel)             in language  on input line 725.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 727.
+(babel)             in language  on input line 725.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 727.
+(babel)             in language  on input line 725.
  [14]
 File: output_4.png Graphic file (type QTm)
- <use  "output_4.png" >
+
+<use  "output_4.png" >
 File: output_5.png Graphic file (type QTm)
  <use  "output_5.png" >
 File: output_6.png Graphic file (type QTm)
-
-<use  "output_6.png" >
+ <use  "output_6.png" >
 Missing character: There is no ≥ in font latt1000!
 Missing character: There is no ≥ in font latt1000!
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 763.
+(babel)             in language  on input line 761.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 763.
+(babel)             in language  on input line 761.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 763.
+(babel)             in language  on input line 761.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 763.
+(babel)             in language  on input line 761.
  [15]
 Requested font "cmex7" at 5.0pt
 Requested font "larm0500" at 5.0pt
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <5> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 779.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 777.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 779.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 777.
 Requested font "msam5" at 5.0pt
 Requested font "msbm5" at 5.0pt
 Requested font "cmr10" at 5.0pt
 Requested font "tcrm0500" at 5.0pt
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 807.
+(babel)             in language  on input line 805.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 807.
+(babel)             in language  on input line 805.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 826.
+(babel)             in language  on input line 824.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 826.
+(babel)             in language  on input line 824.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 826.
+(babel)             in language  on input line 824.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 826.
- [16]
-Underfull \hbox (badness 10000) in paragraph at lines 834--837
+(babel)             in language  on input line 824.
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 832--835
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 838--849
+Underfull \hbox (badness 10000) in paragraph at lines 836--847
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 852--855
+Underfull \hbox (badness 10000) in paragraph at lines 850--853
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 856--867
+Underfull \hbox (badness 10000) in paragraph at lines 854--865
 
  []
 
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 870.
+(babel)             in language  on input line 868.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 870.
+(babel)             in language  on input line 868.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 883.
+(babel)             in language  on input line 881.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 883.
+(babel)             in language  on input line 881.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 883.
+(babel)             in language  on input line 881.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 883.
+(babel)             in language  on input line 881.
 [17]
+Missing character: There is no а in font larm1440!
+Missing character: There is no ф in font larm1440!
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 918.
+(babel)             in language  on input line 916.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 918.
+(babel)             in language  on input line 916.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 935.
+(babel)             in language  on input line 933.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 935.
+(babel)             in language  on input line 933.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 935.
+(babel)             in language  on input line 933.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 935.
+(babel)             in language  on input line 933.
  [18]
-Overfull \hbox (51.75504pt too wide) in paragraph at lines 973--994
-[][] [] 
- []
-
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1007.
+(babel)             in language  on input line 998.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1007.
+(babel)             in language  on input line 998.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1007.
+(babel)             in language  on input line 998.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1007.
-[19]
+(babel)             in language  on input line 998.
+ [19]
 Underfull \hbox (badness 10000) in paragraph at lines 1009--1011
 
  []
@@ -1522,57 +1518,54 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1040.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1040.
-Missing character: There is no е in font larm1440!
-Missing character: There is no р in font larm1440!
-Missing character: There is no ш in font larm1440!
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1051.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1051.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1051.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1051.
+[20]
 File: output_5_1_4.png Graphic file (type QTm)
-<use  "output_5_1_4.png" >
+ <use  "output_5_1_4.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1058.
+(babel)             in language  on input line 1076.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1058.
+(babel)             in language  on input line 1076.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1058.
+(babel)             in language  on input line 1076.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1058.
- [20]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1080.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1080.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1080.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1080.
+(babel)             in language  on input line 1076.
  [21]
 File: output_7_2_4.png Graphic file (type QTm)
  <use  "output_7_2_4.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1101.
+(babel)             in language  on input line 1099.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1101.
+(babel)             in language  on input line 1099.
 File: output_10_2_4.png Graphic file (type QTm)
 
 <use  "output_10_2_4.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1119.
+(babel)             in language  on input line 1117.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1119.
+(babel)             in language  on input line 1117.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1119.
+(babel)             in language  on input line 1117.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1119.
+(babel)             in language  on input line 1117.
  [22]
 File: output_11_2_4.png Graphic file (type QTm)
  <use  "output_11_2_4.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1138.
+(babel)             in language  on input line 1136.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1138.
+(babel)             in language  on input line 1136.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1138.
+(babel)             in language  on input line 1136.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1138.
+(babel)             in language  on input line 1136.
  [23]
 Requested font "lait1000" at 10.0pt
 File: output_14_2_4.png Graphic file (type QTm)
@@ -1581,90 +1574,90 @@ File: output_14_2_4.png Graphic file (type QTm)
 File: output_15_2_4.png Graphic file (type QTm)
  <use  "output_15_2_4.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1164.
+(babel)             in language  on input line 1162.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1164.
+(babel)             in language  on input line 1162.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1164.
+(babel)             in language  on input line 1162.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1164.
+(babel)             in language  on input line 1162.
  [24]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1167.
+(babel)             in language  on input line 1165.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1167.
+(babel)             in language  on input line 1165.
 
-Underfull \hbox (badness 3746) in paragraph at lines 1191--1192
+Underfull \hbox (badness 3746) in paragraph at lines 1189--1190
 \T2A/cmr/m/n/14.4 explains 99.8% of data scatter. The most contributing feature
  is
  []
 
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1197.
+(babel)             in language  on input line 1195.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1197.
+(babel)             in language  on input line 1195.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1197.
+(babel)             in language  on input line 1198.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1197.
+(babel)             in language  on input line 1198.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1198.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1198.
 [25]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1197.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1197.
 File: output_4_1_5.png Graphic file (type QTm)
  <use  "output_4_1_5.png" >
 File: output_3_1_5.png Graphic file (type QTm)
  <use  "output_3_1_5.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1209.
+(babel)             in language  on input line 1207.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1209.
+(babel)             in language  on input line 1207.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1209.
+(babel)             in language  on input line 1207.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1209.
+(babel)             in language  on input line 1207.
  [26]
 File: output_9_1_5.png Graphic file (type QTm)
 
 <use  "output_9_1_5.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1230.
+(babel)             in language  on input line 1228.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1230.
+(babel)             in language  on input line 1228.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1230.
+(babel)             in language  on input line 1228.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1230.
+(babel)             in language  on input line 1228.
  [27]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1258.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1258.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1258.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1258.
- [28]
 File: output_22_1_5.png Graphic file (type QTm)
  <use  "output_22_1_5.png" >
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1273.
+(babel)             in language  on input line 1262.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1273.
+(babel)             in language  on input line 1262.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1262.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1262.
+ [28]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1265.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1265.
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1279.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1279.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1279.
+(babel)             in language  on input line 1285.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1279.
+(babel)             in language  on input line 1285.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1285.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1285.
  [29]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1287.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1287.
 Missing character: There is no — in font labx1440!
 Missing character: There is no – in font labx1440!
 Missing character: There is no – in font larm1440!
@@ -1676,28 +1669,28 @@ Missing character: There is no – in font labx1440!
 
 AED: lastpage setting LastPage
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1307.
+(babel)             in language  on input line 1299.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1307.
+(babel)             in language  on input line 1299.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1307.
+(babel)             in language  on input line 1299.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1307.
+(babel)             in language  on input line 1299.
 [30]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1307.
+(babel)             in language  on input line 1299.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1307.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1307.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1307.
+(babel)             in language  on input line 1299.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1299.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1299.
  ("HW 20.aux")
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1307.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1307.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1299.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1299.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1307.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1299.
  ) 
 Here is how much of TeX's memory you used:
  25593 strings out of 428755
@@ -1706,6 +1699,6 @@ Here is how much of TeX's memory you used:
  28268 multiletter control sequences out of 15000+200000
  18681 words of font info for 50 fonts, out of 3000000 for 9000
  1096 hyphenation exceptions out of 8191
- 55i,8n,92p,888b,497s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,92p,888b,561s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on HW 20.pdf (30 pages).

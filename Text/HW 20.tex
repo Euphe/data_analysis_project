@@ -703,21 +703,19 @@ Next we build the 95\% confidence intervals for the grand mean of the feature by
 		\hline
 		\textbf{Parameter} & \textbf{Cluster 1}  & \textbf{Grand mean}  \\ \hline
 		mean & 56.844 & 72.157 \\ \hline
-		pivotal & (48.317, 65.371) & (64.374, 79.340)  \\ \hline
+		pivotal & (48.317, 65.371) & (64.374, 79.34)  \\ \hline
 		non-pivotal & (48.474, 65.590)  & (64.65, 80.238)  \\ \hline
 	\end{tabular}
 \end{center}
 
 \normalsize
 
-Comparison between the grand mean and cluster 0:
-    \begin{center}
-	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_2.png}
-\end{center}
-We pay attention here to the fact that the bell shape of cluster 1 body count resembles the grand mean bell shape closely.
+Comparison between the grand mean and cluster 1:
     \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_2.png}
 \end{center}
+We pay attention here to the fact that the bell shape of cluster 1 body count resembles the grand mean bell shape closely.
+
 
 
     \section{Contingency Table Analysis}
@@ -741,7 +739,7 @@ In this part of the paper we consider the contingency tables. We take three nomi
 
 \end{multicols}
 
-To make the features we split all three attributes with reasonable visible thresholds, shown on the graphs. We take 4 intervals for each attribute. For the IMDB rating we choose 6, 7 and 8 as thresholds, as they are caught by the histogram. It can be really well interpreted as very bad, bad, good and very good films. For the Year we choose 1980, 1990, 2000, 2005 as thresholds. In the previous part we had the cluster of old films, which appeared before 1980, and we can use  it here to set the thresholds. All the others were chosen to make the groups approximately equal. For the on-screen deaths we have chosen 20, 50, 120. 
+To make the features we split all three attributes with reasonable visible thresholds, shown on the plots. We take 4 intervals for each attribute. For the IMDB rating we choose 6, 7 and 8 as thresholds, as they are caught by the histogram. It can be really well interpreted as very bad, bad, good and very good films. For the Year we choose 1980, 1990, 2000, 2005 as thresholds. In the previous part we had the cluster of old films, which appeared before 1980, and we can use  it here to set the thresholds. All the others were chosen to make the groups approximately equal. For the on-screen deaths we have chosen 20, 50, 120. 
 
 \footnotesize
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -847,7 +845,7 @@ The table for the rating and the number of deaths:
 \\
 \normalsize
 
-We can conclude  that the film with more than 200 bodies probably will be well appreciated: it has probability nearly 48\% to have 7 and 22\% to have 6, while the film with <20 deaths will most probably have 6 (40\%) and less probably 7 (29\%). 
+We can conclude  that a film with more than 200 body count probably will be well appreciated: it has probability nearly 48\% to have 7 and 22\% to have 6, while the film with <20 deaths will most probably have 6 (40\%) and less probably 7 (29\%). 
  
 The table for the year and the number of deaths: 
 \\
@@ -865,7 +863,7 @@ The table for the year and the number of deaths:
 \\
 \normalsize
 
-We see that if movie has high amount of deaths it is most probably the new one of very old one. And, as we have much more new films in the dataset, the probability for each cathegory of deaths grows with the year (except one cell). 
+We see that if a movie has high amount of deaths it is most probably a new one or a very old one. And, as we have much more new films in the dataset, the probability for each cathegory of deaths increases with year (except one cell). 
    
  \subsection{Quetelet index tables} 
    
@@ -896,7 +894,7 @@ make_quetelet(normalize(contingency_table_year_bodies)) * 100
    
      \normalsize 
    
- The table shows the relative probability compared to the average.   We can conclude that Films that have 120 or more bodies are more appreciated: they have odds to have rating more than 8.0 $\approx$4\% more than average and chances that film will have rating less than 6.0 is $\approx$23\% less than average
+ The table shows the relative probability compared to the average.   We can conclude that аilms that have 120 or more bodies are more appreciated: they have odds to have rating more than 8.0 $\approx$4\% more than average and chance that ф film will have rating less than 6.0 is $\approx$23\% less than average.
    
 \footnotesize
 
@@ -912,14 +910,14 @@ make_quetelet(normalize(contingency_table_year_bodies)) * 100
    
 \normalsize 
 
-This is an  quetelet table for Year and the number of deaths. We can conclude that the films with the highest amount of deaths have probability $\approx$82\% more then average to be released before 1980. At the same time films with less then 20 deaths are most probable released after 2000. 
+This is an quetelet table for year and the number of deaths. We conclude that the films with the highest amount of deaths have probability $\approx$82\% more than average to be released before 1980. At the same time films with less than 20 deaths are most probably released after 2000. 
 
 
 \subsection{Chi-square \& Quetelet index }
 
-We apply Pearson's chi-squared test to measure the correlation between two variables. The value is the same as Summary Quetelet index. It shows the average relative increase in the prediction of the number ofthe number of deaths in the movie, when the year or the IMDB rating becomes known.
+We apply Pearson's chi-squared test to measure correlation between two variables. The value is the same as Summary Quetelet index. It shows the average relative increase in the prediction of the number ofthe number of deaths in the movie, when the year or the IMDB rating becomes known.
 
-First, we find expected number of films in each category in assumption of independence of features. Also we find number of degrees of freedom. Let's consider the Year and the Body\_Count:
+First, we find expected number of films in each category under assumption of independence of features. Also we find number of degrees of freedom. Let's consider the Year and the Body\_Count:
 
    \footnotesize \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}
@@ -955,9 +953,10 @@ The tables for observed frequencies and expected under the independence conditio
 \end{tabular} \normalsize
 
 \vspace{0.2cm}
-The obtained degree of freedom for $\chi^2$ test is 12.
 
-The $\chi^2$ test for the hypothesis of independence between the year and number of bodies:
+The obtained degrees of freedom amount for $\chi^2$ test is 12.
+
+The $\chi^2$ test for the hypothesis of independence between year and number of bodies:
 
     \footnotesize \begin{Verbatim}[commandchars=\\\{\}]
  \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{chisquare}\PY{p}{(}\PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,} \textbackslash
@@ -965,10 +964,10 @@ The $\chi^2$ test for the hypothesis of independence between the year and number
 \end{Verbatim} 
 \normalsize
 
-We can see that critical pvalue is less than $10^{-4}$. So we can reject the hypothesis of independence between the year and the number of deaths in the movie with level of confidence 99.99%.
+We can see that critical pvalue is less than $10^{-4}$. So we can reject the hypothesis of independence between year and number of deaths with level of confidence 99.99\%.
 
 
-Now consider the same tables for the other feature, IMDB rating, with the number of bodies. Observed frequencies and expected under the independence condition:
+Now consider the same tables for the other feature, IMDB rating, with number of bodies. Observed frequencies and expected under the independence condition:
 
 \footnotesize \begin{tabular}{|l|l|l|l|l|}
 		\hline
@@ -979,6 +978,7 @@ Now consider the same tables for the other feature, IMDB rating, with the number
 	$\geq$20           & 28             & 40   & 39   & 23   \\ \hline
 	$\geq$50           & 39             & 49   & 52   & 21   \\ \hline
 \end{tabular}
+
  \normalsize
  \vspace{0.2cm}
 \footnotesize \begin{tabular}{|l|l|l|l|l|}
@@ -1039,9 +1039,9 @@ The quetelet index is the sum of the values in the table. We compute it to make 
    
     \section{PCA: Hidden Factor \& Data visualization}
     
-In this part of the paper we consider the principal component analysis. we choose three features to take into consederation in tерш part. First one is the Body\_Count, as the main feature of interest. The second one is Year, as we know from the previous analysis that they are well connected. The third one is IMDB rating. 
+In this part of the paper we apply principal component analysis. We choose three features to take into consederation. First one is the Body\_Count, as the main feature of interest. The second one is Year, as we know from the previous analysis that they are well connected. The third one is IMDB rating. 
 
-First we normalize the features. There are two ways of normalization, by standard deviation and by range:
+First we center and normalize the features. There are two ways of normalization, by standard deviation and by range:
 
     \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{normalize\PYZus{}range}\PY{p}{(}\PY{n}{vec}\PY{p}{)}\PY{p}{:}
@@ -1057,8 +1057,7 @@ Recall the plots of joint and self distributions of the features:
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_1_4.png}
 \end{center}
     
-First we apply PCA and inspect the data scatter explained by each PC. We apply PCA to data centered and normalized by range, as proper PCA application requires data to be on the same scale. The 	
-supplementary functions may be found in the Applications.
+First we apply PCA and inspect the data scatter explained by each PC. We apply PCA to data centered and normalized by range, as proper PCA application requires data to be on the same scale. 
 
 
 
@@ -1080,8 +1079,7 @@ supplementary functions may be found in the Applications.
 \end{Verbatim} 
  \normalsize
 
-    The results of the application of principal components are the following.
-   The contributions of the components to the explanation of the variance in distribution are:
+   The contributions of the components to the explanation of data scatter in distribution are:
 
     \footnotesize
 \begin{tabular}{lll}
@@ -1100,9 +1098,9 @@ So, the first PC explains 55\% of data scatter, the second one explains 29\%, th
 
 \subsection{Visualization}
 
-We will use cluster labels from homework 1 to see how PCA helps vizualize them. So, we add the clusters (for k=5) into the set. 
+We will use K-means ($k = 5$) cluster labels from part 2 to see how PCA helps vizualize them.
 	
-We apply PCA to data with clusters centered by mean and normalized by range to show how the first two components explain the scatter.
+We apply PCA to data with clusters centered by mean and normalized by range and plot the first two principal components.
 
     \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{pc\PYZus{}range} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{n}{n\PYZus{}components} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{)}
@@ -1120,16 +1118,16 @@ We apply PCA to data with clusters centered by mean and normalized by range to s
     
 Evidently the clusters are easily separatable, except for 0 and 4, which tend to overlap with other clusters.
 
-Next we Applying PCA to data normalized by standard deviation. The code is similar, the resulting plot is as follows:
+Next we apply PCA to data normalized by standard deviation. The code is similar, the resulting plot is as follows:
 
    \begin{center}
 	\adjustimage{max size={0.7\linewidth}{0.9\paperheight}}{output_11_2_4.png}
 \end{center}
 
 
-This one is much less descriptive, the clusters overlap alot. 
+This one is much less descriptive, clusters overlap alot. 
 
-Next, we apply conventional PCA to the same visualization. 
+Next, we implement and apply conventional PCA. 
     
 
     \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
@@ -1148,15 +1146,15 @@ Next, we apply conventional PCA to the same visualization.
 \end{Verbatim} 
 \normalsize
 
-Firstly we apply the conventional PCA to  data normalized by range:
+Firstly we apply conventional PCA to  data normalized by range:
 
     \begin{center}
 	\adjustimage{max size={0.7\linewidth}{0.7\paperheight}}{output_14_2_4.png}
 \end{center}
 
-    Applying conventional PCA to data normalized by range yields nearly identical results to using model-based PCA. That is expected, because it is the same method. When using conventional PCA it's important to center our data (while model-based PCA can be applied to non-centered data). Here the data is centered, so we get same results.
+    The results are nearly identical to those of model-based PCA. That is expected. When using conventional PCA it's important to center our data (while model-based PCA can be applied to non-centered data). Here the data is centered, so we get same results.
     
-Secondly we apply  the conventional PCA to  data normalized by standard deviation. It also gives identical results, but rotated 180 degrees: 
+Secondly we apply  the conventional PCA to data normalized by standard deviation. It also gives identical results, but rotated 180 degrees: 
 
 
  \begin{center}
@@ -1166,7 +1164,7 @@ Secondly we apply  the conventional PCA to  data normalized by standard deviatio
     
     \subsection{Hidden factor analysis}
     
-In this part we try to uncover the hidden factor behind the selected features and determine which of them contribute the most. In this function we implement applying PCA, extracting the first singular triplet and rescaling it: 
+In this part we try to uncover the hidden factor behind selected features and determine which of them contribute most. In this function we implement applying PCA, extracting the first singular triplet and rescaling it: 
 
     
 \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
@@ -1188,7 +1186,7 @@ In this part we try to uncover the hidden factor behind the selected features an
 \end{Verbatim} 
  \normalsize
 
-So, on the 0-100 rank we obtain that the first principal  component explains 99.8\% of data scatter. The most contributing feature is IMDB\_Rating, which determines 96\% of the PC. 
+So, on the 0-100 rank we obtain that the first principal  component explains 99.8\% of data scatter. The most contributing feature is IMDB\_Rating, which determines 96.4\% of the PC. 
 
 
     
@@ -1202,7 +1200,7 @@ In this part of the paper we examine the 2D regressions. First, we choose two va
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_1_5.png}
 \end{center}
 
-None of these has really "linear-like" plot, but we choose Length\_Minutes and IMDB\_Rating as the best variant. First, explore closer their scatter-plot.
+None of these are "linear-like" plots. We choose Length\_Minutes and IMDB\_Rating as the best options. First, we explore their scatter-plot closer.
 
     \begin{center}
 	\adjustimage{max size={0.6\linewidth}{0.9\paperheight}}{output_3_1_5.png}
@@ -1229,10 +1227,10 @@ The visualization of the regression line:
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_1_5.png}
 \end{center}
   
-The slope of the regression is 0.0211439. That means that every minute of the film gives additional 0.02114397 to the rating. It doesn't seem much, but these 0.02 may raise the film on tens of places in the search or in the top-movies rating, as there are >5 mln movies on IMDB rated at ten-point scale.
+The slope of the regression is 0.0211439. That means that every minute of a film gives additional 0.0211439 to rating. It doesn't seem much, but these 0.02 may raise the film on tens of places in the search or in the top-movies rating, as there are >5 mln movies on IMDB rated at ten-point scale.
 
 This correlation may follow the suggested hypothesis: the production of the long movie usually 
-requires a huge budget, which will be approved if the film is supposed to be good. So, long films are among the good ones.
+requires a bigger budget, which will be approved if the film is supposed to be good. So, long films are generally among the good ones.
 
 
 The determinacy coefficient and mean absolute error:
@@ -1247,9 +1245,9 @@ The determinacy coefficient and mean absolute error:
  \normalsize  
   
 
-The determinacy coefficient is 0.18600394479373705, which is very low value. At the same time mean absolute error is very high. It shows that the classificator works really bad on these features. 
+The determinacy coefficient is 0.186, which is very low value. At the same time mean absolute error is very high at 0.782. It shows that the regression model works really bad on these features. 
 
-Nevertheless, we try to predict values of the rating by the length of the movie. We take four values for the length of the movie: [80, 100, 150, 200] minutes. The predicted ratings are: [6.0716766 , 6.49455604, 7.55175466, 8.60895327].
+Nevertheless, we try to predict values of rating by the length of movie. We take four values for the length of the movie: [80, 100, 150, 200] minutes. The predicted ratings are: [6.0716766 , 6.49455604, 7.55175466, 8.60895327].
 
     \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{lengths\PYZus{}to\PYZus{}predict} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{150}\PY{p}{]}\PY{p}{)}
@@ -1258,24 +1256,18 @@ Nevertheless, we try to predict values of the rating by the length of the movie.
 \end{Verbatim} 
  \normalsize
 
-
-
-The visualization among the data is the following:
  
 \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_1_5.png}
 \end{center}
- 
-The predictions stay among the other points while we use the value for minutes from the same range that the sample values. 
-
 
 
 \section{Conclusion}
 
-In this project we explore the data on movies. The the first section contains the descriprion of the data and some hypothesis. In the next section we apply the clustering methods to analyze the data. The third section contains the contingency table analysis, $\chi^2$ and quetelet index. In the next we study the hidden factors by principal component analysis. Then, we use 2D regression to find some more patterns. 
+In this project we explore the data on movies. The first section contains the descriprion of the dataset and some hypothesis. In the next section we apply the clustering methods to analyze the data. The third section contains the contingency table analysis, $\chi^2$ and quetelet index. In the next we study the hidden factors by principal component analysis. Then, we use 2D regression to find some more patterns. 
 
-The main feature of the consideration was the number of on-screen deaths in the movies. The most number in our data is 836 \textit{("Lord of the Rings: Return of the King")}. 
-There are several things of great interest among the patterns and correlations that we found. The old films, which were filmed before  1980 stay aside the others  as they are mostly longer and highly-rated. Modern films, of course, have higher number of deaths. And the films with a lot of violence are rated with stronger restrictions by MPAA. 
+The main feature of the consideration was the number of on-screen deaths in the movies. The higest number in our data is 836 \textit{("Lord of the Rings: Return of the King")}. 
+There are several things of great interest among the patterns and correlations that we found. The old films, which were filmed before 1980 stay aside from the others  as they are mostly long and highly-rated. Modern films, of course, have a higher amount of deaths. And the films with a lot of violence are rated with stronger restrictions by MPAA. 
 
 PC analysis revealed the high ability of IMDB rating to describe the other numerical features, as it is the main contributor to the first component. That shows that the ratings really reflect some important properties and summarize them.
 
