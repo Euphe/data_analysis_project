@@ -770,35 +770,36 @@ Next we build the contingency tables for the determined features:
 
 \footnotesize
     \begin{Verbatim}[commandchars=\\\{\}]    
- \PY{n}{contingency\PYZus{}table\PYZus{}imdb\PYZus{}bodies} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{bodies}\PY{p}{,} \PY{n}{imdb\PYZus{}rating}\PY{p}{,} \PY{n}{margins}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{margins\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+ \PY{n}{contingency\PYZus{}table\PYZus{}imdb\PYZus{}bodies} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{bodies}\PY{p}{,} \PY{n}{imdb\PYZus{}rating}\PY{p}{,} \PY{n}{margins}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \textbackslash 
+                                 \PY{n}{margins\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
  \PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{bodies}\PY{p}{,} \PY{n}{year}\PY{p}{,} \PY{n}{margins}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{margins\PYZus{}name}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}    
 \end{Verbatim}
+\footnotesize
 
-   
-
-\begin{table}[]
-	\begin{tabular}{lllllll}
-		IMDB\_Rating  & \textless{}6.0 & $\geq$6.0 & $\geq$7.0 & $\geq$8.0 & Total & Total \\
-		Body\_Count   &                &      &      &      &       &       \\
-		\textless{}20 & 28             & 65   & 47   & 22   & 162   & 162   \\
-		$\geq$120          & 14             & 20   & 44   & 14   & 92    & 92    \\
-		$\geq$20           & 28             & 40   & 39   & 23   & 130   & 130   \\
-		$\geq$50           & 39             & 49   & 52   & 21   & 161   & 161   \\
-		Total         & 109            & 174  & 182  & 80   & 545   & 545  
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+		IMDB\_Rating  & \textless{}6.0 & $\geq$6.0 & $\geq$7.0 & $\geq$8.0 & Total \\
+		Body\_Count   &                &      &      &      &             \\ \hline 
+		\textless{}20 & 28             & 65   & 47   & 22   & 162     \\ \hline
+		$\geq$120          & 14             & 20   & 44   & 14   & 92    \\ \hline
+		$\geq$20           & 28             & 40   & 39   & 23   & 130    \\ \hline
+		$\geq$50           & 39             & 49   & 52   & 21   & 161     \\ \hline
+		Total         & 109            & 174  & 182  & 80   & 545  \\    \hline
 	\end{tabular}
-\end{table}
+\vspace{0.2cm}
 
-\begin{table}[]
-	\begin{tabular}{lllllll}
-		Year          & \textless{}1980 & $\geq$1980 & $\geq$1990 & $\geq$2000 & $\geq$2005 & Total \\
-		Body\_Count   &                 &       &       &       &       &       \\
-		\textless{}20 & 12              & 14    & 39    & 44    & 53    & 162   \\
-		$\geq$120          & 20              & 10    & 13    & 24    & 25    & 92    \\
-		$\geq$20           & 10              & 23    & 48    & 19    & 30    & 130   \\
-		$\geq$50           & 23              & 25    & 39    & 30    & 44    & 161   \\
-		Total         & 65              & 72    & 139   & 117   & 152   & 545  
+	\begin{tabular}{|l|l|l|l|l|l|l|}
+		\hline
+		Year          & \textless{}1980 & $\geq$1980 & $\geq$1990 & $\geq$2000 & $\geq$2005 & Total \\ \hline
+		Body\_Count   &                 &       &       &       &       &       \\ \hline
+		\textless{}20 & 12              & 14    & 39    & 44    & 53    & 162   \\ \hline
+		$\geq$120          & 20              & 10    & 13    & 24    & 25    & 92    \\ \hline
+		$\geq$20           & 10              & 23    & 48    & 19    & 30    & 130   \\ \hline
+		$\geq$50           & 23              & 25    & 39    & 30    & 44    & 161   \\ \hline
+		Total         & 65              & 72    & 139   & 117   & 152   & 545  \\ \hline
 	\end{tabular}
-\end{table}
+\vspace{0.2cm}
+
   \normalsize 
    
  The first table shows the joint distribution of the IMDB rating and the number of deaths.  The second shows the   joint distribution between the Year and the number of deaths.
@@ -834,13 +835,14 @@ The table for the rating and the number of deaths:
 \\
 \footnotesize
 
-\begin{tabular}{lllll}
-	IMDB\_Rating  & \textless{}6.0 & \geq 6.0      & \geq 7.0      & \geq 8.0      \\
-	Body\_Count   &                &           &           &           \\
-	\textless{}20 & 17.283951      & 40.123457 & 29.012346 & 13.580247 \\
-\geq 20           & 21.538462      & 30.769231 & 30.000000 & 17.692308 \\
-	\geq 50           & 24.223602      & 30.434783 & 32.298137 & 13.043478 \\
-\geq 120          & 15.217391      & 21.739130 & 47.826087 & 15.217391 \\        
+\begin{tabular}{|l|l|l|l|l|}
+	\hline
+	IMDB\_Rating  & \textless{}6.0 & \geq 6.0      & \geq 7.0      & \geq 8.0      \\ \hline
+	Body\_Count   &                &           &           &           \\ \hline \hline
+	\textless{}20 & 17.283951      & 40.123457 & 29.012346 & 13.580247 \\ \hline \hline
+\geq 20           & 21.538462      & 30.769231 & 30.000000 & 17.692308 \\ \hline \hline
+	\geq 50           & 24.223602      & 30.434783 & 32.298137 & 13.043478 \\ \hline \hline
+\geq 120          & 15.217391      & 21.739130 & 47.826087 & 15.217391 \\ \hline        \hline
 \end{tabular}
 \\
 \normalsize
@@ -851,13 +853,14 @@ The table for the year and the number of deaths:
 \\
 \footnotesize
 
-\begin{tabular}{llllll}
-	Year          & \textless{}1980 & \geq 1980     & \geq 1990     & \geq 2000     & \geq 2005     \\
-	Body\_Count   &                 &           &           &           &           \\
-	\textless{}20 & 7.407407        & 8.641975  & 24.074074 & 27.160494 & 32.716049 \\
-	\geq 20           & 7.692308        & 17.692308 & 36.923077 & 14.615385 & 23.076923 \\
-	\geq 50           & 14.285714       & 15.527950 & 24.223602 & 18.633540 & 27.329193 \\
-	\geq 120          & 21.739130       & 10.869565 & 14.130435 & 26.086957 & 27.173913 \\
+\begin{tabular}{|l|l|l|l|l|l|}
+	\hline
+	Year          & \textless{}1980 & \geq 1980     & \geq 1990     & \geq 2000     & \geq 2005     \\ \hline
+	Body\_Count   &                 &           &           &           &           \\ \hline
+	\textless{}20 & 7.407407        & 8.641975  & 24.074074 & 27.160494 & 32.716049 \\ \hline
+	\geq 20           & 7.692308        & 17.692308 & 36.923077 & 14.615385 & 23.076923 \\ \hline
+	\geq 50           & 14.285714       & 15.527950 & 24.223602 & 18.633540 & 27.329193 \\ \hline
+	\geq 120          & 21.739130       & 10.869565 & 14.130435 & 26.086957 & 27.173913 \\ \hline
 \end{tabular}
 \\
 \normalsize
@@ -874,20 +877,21 @@ Now we build Quetelet index tables:
     \PY{n}{res}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{index}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{inplace}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
     \PY{k}{for} \PY{n}{col} \PY{o+ow}{in} \PY{n}{res}\PY{p}{:}
         \PY{k}{for} \PY{n}{row} \PY{o+ow}{in} \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{o}{.}\PY{n}{index}\PY{p}{:}
-            \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{/} \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PYZbs{}
-                \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+            \PY{n}{res}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]}\PY{o}{=}\PY{p}{(}\PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]}\PY{p}{/}\PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{[}\PY{n}{row}\PY{p}{]} \PY{o}{\PYZhy{}} \textbackslash          
+                      \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{o}{/} \PY{n}{probabilites\PYZus{}df}\PY{p}{[}\PY{n}{col}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Total}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
 \PY{k}{return} \PY{n}{res}
 make_quetelet(normalize(contingency_table_imdb_bodies)) * 100
 make_quetelet(normalize(contingency_table_year_bodies)) * 100
         \end{Verbatim}
 
-   \begin{tabular}{lllll}
-   	IMDB\_Rating  & \textless{}6.0 & $\geq$6.0       & $\geq$7.0       & $\geq$8.0       \\
-   	Body\_Count   &                &            &            &            \\
-   	\textless{}20 & -13.580247     & 25.674046  & -13.122371 & -7.484568  \\
-   	$\geq$120          & -23.913043     & -31.909045 & 43.215480  & 3.668478   \\
-   	$\geq$20           & 7.692308       & -3.625111  & -10.164835 & 20.528846  \\
-   	$\geq$50           & 21.118012      & -4.672664  & -3.283052  & -11.141304 \\
+   \begin{tabular}{|l|l|l|l|l|}
+   	\hline
+   	IMDB\_Rating  & \textless{}6.0 & $\geq$6.0       & $\geq$7.0       & $\geq$8.0       \\ \hline
+   	Body\_Count   &                &            &            &            \\ \hline
+   	\textless{}20 & -13.580247     & 25.674046  & -13.122371 & -7.484568  \\ \hline
+   	$\geq$120          & -23.913043     & -31.909045 & 43.215480  & 3.668478   \\ \hline
+   	$\geq$20           & 7.692308       & -3.625111  & -10.164835 & 20.528846  \\ \hline
+   	$\geq$50           & 21.118012      & -4.672664  & -3.283052  & -11.141304 \\ \hline
    \end{tabular}
    
      \normalsize 
@@ -896,13 +900,14 @@ make_quetelet(normalize(contingency_table_year_bodies)) * 100
    
 \footnotesize
 
- \begin{tabular}{llllll}
- 	Year          & \textless{}1980 & $\geq$1980      & $\geq$1990      & $\geq$2000      & $\geq$2005      \\
- 	Body\_Count   &                 &            &            &            &            \\
- 	\textless{}20 & -37.891738      & -34.585048 & -5.608846  & 26.516830  & 17.304256  \\
- 	$\geq$120          & 82.274247       & -17.723430 & -44.596497 & 21.516165  & -2.567220  \\
- 	$\geq$20           & -35.502959      & 33.920940  & 44.770338  & -31.919790 & -17.257085 \\
- 	$\geq$50           & 19.780220       & 17.537957  & -5.022566  & -13.202739 & -2.010461  \\
+ \begin{tabular}{|l|l|l|l|l|l|}
+ 	\hline
+ 	Year          & \textless{}1980 & $\geq$1980      & $\geq$1990      & $\geq$2000      & $\geq$2005      \\ \hline
+ 	Body\_Count   &                 &            &            &            &            \\ \hline
+ 	\textless{}20 & -37.891738      & -34.585048 & -5.608846  & 26.516830  & 17.304256  \\ \hline
+ 	$\geq$120          & 82.274247       & -17.723430 & -44.596497 & 21.516165  & -2.567220  \\ \hline
+ 	$\geq$20           & -35.502959      & 33.920940  & 44.770338  & -31.919790 & -17.257085 \\ \hline
+ 	$\geq$50           & 19.780220       & 17.537957  & -5.022566  & -13.202739 & -2.010461  \\ \hline
  \end{tabular}  
    
 \normalsize 
@@ -917,39 +922,46 @@ We apply Pearson's chi-squared test to measure the correlation between two varia
 First, we find expected number of films in each category in assumption of independence of features. Also we find number of degrees of freedom. Let's consider the Year and the Body\_Count:
 
    \footnotesize \begin{Verbatim}[commandchars=\\\{\}]
-    \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}
+\PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}
 \PY{n}{exp\PYZus{}values\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{expected\PYZus{}values}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}
-\PY{n}{degrees\PYZus{}of\PYZus{}freedom\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{degrees\PYZus{}of\PYZus{}freedom\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{reduce}\PY{p}{(}\PY{n}{mul}\PY{p}{,} \PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n}{x} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \textbackslash
+                                       \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
 \PY{n}{ddof\PYZus{}year\PYZus{}bodies} \PY{o}{=} \PY{n}{obs\PYZus{}values\PYZus{}year\PYZus{}bodies}\PY{o}{.}\PY{n}{size} \PY{o}{\PYZhy{}} \PY{n}{degrees\PYZus{}of\PYZus{}freedom\PYZus{}year\PYZus{}bodies} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}
 \end{Verbatim} 
 \normalsize
 
+
 The tables for observed frequencies and expected under the independence condition:
 
-\footnotesize \begin{tabular}{llllll}
-	Year          & \textless{}1980 & $\geq$1980 & $\geq$1990 & $\geq$2000 & $\geq$2005 \\
-	Body\_Count   &                 &       &       &       &       \\
-	\textless{}20 & 12              & 14    & 39    & 44    & 53    \\
-	$\geq$120          & 20              & 10    & 13    & 24    & 25    \\
-	$\geq$20           & 10              & 23    & 48    & 19    & 30    \\
-	$\geq$50           & 23              & 25    & 39    & 30    & 44    \\
-\end{tabular} \normalsize
-\footnotesize \begin{tabular}{llllll}
-	Year          & \textless{}1980 & $\geq$1980     & $\geq$1990     & $\geq$2000     & $\geq$2005     \\
-	Body\_Count   &                 &           &           &           &           \\
-	\textless{}20 & 19.321101       & 21.401835 & 41.317431 & 34.777982 & 45.181651 \\
-	$\geq$120          & 10.972477       & 12.154128 & 23.464220 & 19.750459 & 25.658716 \\
-	$\geq$20           & 15.504587       & 17.174312 & 33.155963 & 27.908257 & 36.256881 \\
-	$\geq$50           & 19.201835       & 21.269725 & 41.062385 & 34.563303 & 44.902752 \\
+\footnotesize \begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+	Year          & \textless{}1980 & $\geq$1980 & $\geq$1990 & $\geq$2000 & $\geq$2005 \\ \hline
+	Body\_Count   &                 &       &       &       &       \\ \hline
+	\textless{}20 & 12              & 14    & 39    & 44    & 53    \\ \hline
+	$\geq$120          & 20              & 10    & 13    & 24    & 25    \\ \hline
+	$\geq$20           & 10              & 23    & 48    & 19    & 30    \\ \hline
+	$\geq$50           & 23              & 25    & 39    & 30    & 44    \\ \hline
 \end{tabular} \normalsize
 
+\vspace{0.2cm}
+\footnotesize \begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+	Year          & \textless{}1980 & $\geq$1980     & $\geq$1990     & $\geq$2000     & $\geq$2005     \\ \hline
+	Body\_Count   &                 &           &           &           &           \\ \hline
+	\textless{}20 & 19.321101       & 21.401835 & 41.317431 & 34.777982 & 45.181651 \\ \hline
+	$\geq$120          & 10.972477       & 12.154128 & 23.464220 & 19.750459 & 25.658716 \\ \hline
+	$\geq$20           & 15.504587       & 17.174312 & 33.155963 & 27.908257 & 36.256881 \\ \hline
+	$\geq$50           & 19.201835       & 21.269725 & 41.062385 & 34.563303 & 44.902752 \\ \hline
+\end{tabular} \normalsize
+
+\vspace{0.2cm}
 The obtained degree of freedom for $\chi^2$ test is 12.
 
 The $\chi^2$ test for the hypothesis of independence between the year and number of bodies:
 
     \footnotesize \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}184}]:} \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{chisquare}\PY{p}{(}\PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,} \PY{n}{expected\PYZus{}values}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,}
-\PY{n}{ddof}\PY{o}{=}\PY{n}{ddof\PYZus{}year\PYZus{}bodies}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}
+ \PY{n}{scipy}\PY{o}{.}\PY{n}{stats}\PY{o}{.}\PY{n}{chisquare}\PY{p}{(}\PY{n}{trunc\PYZus{}total}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,} \textbackslash
+        \PY{n}{expected\PYZus{}values}\PY{p}{(}\PY{n}{contingency\PYZus{}table\PYZus{}year\PYZus{}bodies}\PY{p}{)}\PY{p}{,} \PY{n}{ddof}\PY{o}{=}\PY{n}{ddof\PYZus{}year\PYZus{}bodies}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}
 \end{Verbatim} 
 \normalsize
 
@@ -958,22 +970,25 @@ We can see that critical pvalue is less than $10^{-4}$. So we can reject the hyp
 
 Now consider the same tables for the other feature, IMDB rating, with the number of bodies. Observed frequencies and expected under the independence condition:
 
-\footnotesize \begin{tabular}{lllll}
-	IMDB\_Rating  & \textless{}6.0 & $\geq$6.0 & $\geq$7.0 & $\geq$8.0 \\
-	Body\_Count   &                &      &      &      \\
-	\textless{}20 & 28             & 65   & 47   & 22   \\
-	$\geq$120          & 14             & 20   & 44   & 14   \\
-	$\geq$20           & 28             & 40   & 39   & 23   \\
-	$\geq$50           & 39             & 49   & 52   & 21   \\
+\footnotesize \begin{tabular}{|l|l|l|l|l|}
+		\hline
+	IMDB\_Rating  & \textless{}6.0 & $\geq$6.0 & $\geq$7.0 & $\geq$8.0 \\ \hline
+	Body\_Count   &                &      &      &      \\ \hline
+	\textless{}20 & 28             & 65   & 47   & 22   \\ \hline
+	$\geq$120          & 14             & 20   & 44   & 14   \\ \hline
+	$\geq$20           & 28             & 40   & 39   & 23   \\ \hline
+	$\geq$50           & 39             & 49   & 52   & 21   \\ \hline
 \end{tabular}
  \normalsize
-\footnotesize \begin{tabular}{lllll}
-	MDB\_Rating   & \textless{}6.0 & $\geq$6.0      & $\geq$7.0      & $\geq$8.0      \\
-	Body\_Count   &                &           &           &           \\
-	\textless{}20 & 32.4           & 51.721101 & 54.099083 & 23.779817 \\
-	$\geq$120          & 18.4           & 29.372477 & 30.722936 & 13.504587 \\
-	$\geq$20           & 26.0           & 41.504587 & 43.412844 & 19.082569 \\
-	$\geq$50           & 32.2           & 51.401835 & 53.765138 & 23.633028 \\
+ \vspace{0.2cm}
+\footnotesize \begin{tabular}{|l|l|l|l|l|}
+		\hline
+	MDB\_Rating   & \textless{}6.0 & $\geq$6.0      & $\geq$7.0      & $\geq$8.0      \\ \hline
+	Body\_Count   &                &           &           &           \\ \hline
+	\textless{}20 & 32.4           & 51.721101 & 54.099083 & 23.779817 \\ \hline
+	$\geq$120          & 18.4           & 29.372477 & 30.722936 & 13.504587 \\ \hline
+	$\geq$20           & 26.0           & 41.504587 & 43.412844 & 19.082569 \\ \hline
+	$\geq$50           & 32.2           & 51.401835 & 53.765138 & 23.633028 \\ \hline
 \end{tabular}
  \normalsize
 
@@ -994,27 +1009,27 @@ hypothesis with level of confidence 97\% or higher.
 Now we compute chi-square summary quetelet index tables for both features:
 \\
 
-\footnotesize \begin{tabular}{lllll} \hline
-	IMDB\_Rating  & \textless{}6.0 & Total     & $\geq$6.0      & $\geq$7.0      \\ \hline
-	Body\_Count   &                &           &           &           \\
-	\textless{}20 & -3.802469      & 5.071541  & 16.688130 & -6.167515 \\
-	Total         & 3.239576       & 18.231013 & 6.566671  & 7.175824  \\
-	$\geq$120          & -3.347826      & 9.798763  & -6.381809 & 19.014811 \\
-	$\geq$20           & 2.153846       & 1.461151  & -1.450044 & -3.964286 \\
-	$\geq$50           & 8.236025       & 1.899559  & -2.289605 & -1.707187 
+\footnotesize \begin{tabular}{|l|l|l|l|l|} \hline
+	IMDB\_Rating  & \textless{}6.0 & Total     & $\geq$6.0      & $\geq$7.0      \\ \hline \hline
+	Body\_Count   &                &           &           &           \\ \hline
+	\textless{}20 & -3.802469      & 5.071541  & 16.688130 & -6.167515 \\ \hline
+	Total         & 3.239576       & 18.231013 & 6.566671  & 7.175824  \\ \hline
+	$\geq$120          & -3.347826      & 9.798763  & -6.381809 & 19.014811 \\ \hline
+	$\geq$20           & 2.153846       & 1.461151  & -1.450044 & -3.964286 \\ \hline
+	$\geq$50           & 8.236025       & 1.899559  & -2.289605 & -1.707187 \\ \hline
 \end{tabular} 
 \normalsize
-\\
-\
 
-\footnotesize \begin{tabular}{lllllll} \hline
-	Year          & \textless{}1980 & Total     & $\geq$1980     & $\geq$1990     & $\geq$2000     & $\geq$2005     \\ \hline
-	Body\_Count   &                 &           &           &           &           &           \\
-	\textless{}20 & -4.547009       & 9.262296  & -4.841907 & -2.187450 & 11.667405 & 9.171256  \\
-	Total         & 12.906996       & 39.298444 & 5.572056  & 11.545967 & 6.805703  & 2.467722  \\
-	$\geq$120          & 16.454849       & 13.407037 & -1.772343 & -5.797545 & 5.163880  & -0.641805 \\
-	$\geq$20           & -3.550296       & 14.499397 & 7.801816  & 21.489762 & -6.064760 & -5.177126 \\
-	$\geq$50           & 4.549451        & 2.129715  & 4.384489  & -1.958801 & -3.960822 & -0.884603 
+\vspace{0.2cm}
+
+\footnotesize \begin{tabular}{|l|l|l|l|l|l|l|} \hline
+	Year          & \textless{}1980 & Total     & $\geq$1980     & $\geq$1990     & $\geq$2000     & $\geq$2005     \\ \hline \hline
+	Body\_Count   &                 &           &           &           &           &           \\ \hline
+	\textless{}20 & -4.547009       & 9.262296  & -4.841907 & -2.187450 & 11.667405 & 9.171256  \\ \hline
+	Total         & 12.906996       & 39.298444 & 5.572056  & 11.545967 & 6.805703  & 2.467722  \\ \hline
+	$\geq$120          & 16.454849       & 13.407037 & -1.772343 & -5.797545 & 5.163880  & -0.641805 \\ \hline
+	$\geq$20           & -3.550296       & 14.499397 & 7.801816  & 21.489762 & -6.064760 & -5.177126 \\ \hline
+	$\geq$50           & 4.549451        & 2.129715  & 4.384489  & -1.958801 & -3.960822 & -0.884603 \\ \hline
 \end{tabular} 
 \normalsize
 \\
@@ -1100,7 +1115,7 @@ We apply PCA to data with clusters centered by mean and normalized by range to s
  \normalsize
 
     \begin{center}
-	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_2_4.png}
+	\adjustimage{max size={0.7\linewidth}{0.9\paperheight}}{output_10_2_4.png}
 \end{center}    
     
 Evidently the clusters are easily separatable, except for 0 and 4, which tend to overlap with other clusters.
@@ -1108,7 +1123,7 @@ Evidently the clusters are easily separatable, except for 0 and 4, which tend to
 Next we Applying PCA to data normalized by standard deviation. The code is similar, the resulting plot is as follows:
 
    \begin{center}
-	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_2_4.png}
+	\adjustimage{max size={0.7\linewidth}{0.9\paperheight}}{output_11_2_4.png}
 \end{center}
 
 
@@ -1130,16 +1145,6 @@ Next, we apply conventional PCA to the same visualization.
     \PY{n}{pc1} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{eigvectors}\PY{p}{[}\PY{n}{ind1}\PY{p}{]}\PY{p}{)}  \PY{o}{/} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{eigvals}\PY{p}{[}\PY{n}{ind1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
     \PY{n}{pc2} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{eigvectors}\PY{p}{[}\PY{n}{ind2}\PY{p}{]}\PY{p}{)}  \PY{o}{/} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{eigvals}\PY{p}{[}\PY{n}{ind2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
     \PY{k}{return} \PY{n}{pc1}\PY{p}{,} \PY{n}{pc2}
-    
-     X = pd.DataFrame([
-         [41, 66, 90],
-         [57, 56, 60],
-         [61, 72, 79],
-         [69, 73, 72],
-         [63, 52, 88],
-         [62, 83, 80]
-     ])     
-     conv_pca(X)
 \end{Verbatim} 
 \normalsize
 
@@ -1200,7 +1205,7 @@ In this part of the paper we examine the 2D regressions. First, we choose two va
 None of these has really "linear-like" plot, but we choose Length\_Minutes and IMDB\_Rating as the best variant. First, explore closer their scatter-plot.
 
     \begin{center}
-	\adjustimage{max size={0.7\linewidth}{0.9\paperheight}}{output_3_1_5.png}
+	\adjustimage{max size={0.6\linewidth}{0.9\paperheight}}{output_3_1_5.png}
 \end{center}
 
 Based on the visualization, we expect positive correlation here. 
