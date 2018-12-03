@@ -724,6 +724,7 @@ We pay attention here to the fact that the bell shape of cluster 1 body count re
     
 In this part of the paper we consider the contingency tables. We take three nominal features from the dataset, producing them by splitting from the quantitative features. Consider the histograms for IMDB\_Rating, Year and Body\_count:
 
+\newpage
 \begin{multicols}{2}
     \begin{center}
 	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4.png}
@@ -806,7 +807,7 @@ Next we build the contingency tables for the determined features:
  
  To see the relative probabilities we build the relative frequency tables over the same features: 
  
- 
+ \footnotesize
      \begin{Verbatim}[commandchars=\\\{\}]
  \PY{k}{def} \PY{n+nf}{make\PYZus{}relative}\PY{p}{(}\PY{n}{probabilites\PYZus{}df}\PY{p}{)}\PY{p}{:}
      \PY{n}{res} \PY{o}{=} \PY{n}{probabilites\PYZus{}df}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
@@ -1027,12 +1028,13 @@ In this part of the paper we consider the principal component analysis. we choos
 
 First we normalize the features. There are two ways of normalization, by standard deviation and by range:
 
-    \begin{Verbatim}[commandchars=\\\{\}]
+    \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k}{def} \PY{n+nf}{normalize\PYZus{}range}\PY{p}{(}\PY{n}{vec}\PY{p}{)}\PY{p}{:}
     \PY{k}{return} \PY{p}{(}\PY{n}{vec} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{vec}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \PY{k}{def} \PY{n+nf}{normalize\PYZus{}std}\PY{p}{(}\PY{n}{vec}\PY{p}{)}\PY{p}{:}
     \PY{k}{return} \PY{p}{(}\PY{n}{vec} \PY{o}{\PYZhy{}} \PY{n}{vec}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{vec}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
+\end{Verbatim} 
+ \normalsize
 
 Recall the plots of joint and self distributions of the features: 
 
@@ -1045,7 +1047,7 @@ supplementary functions may be found in the Applications.
 
 
 
-\begin{Verbatim}[commandchars=\\\{\}]
+\footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{pc\PYZus{}range} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{p}{)}
 \PY{n}{pc\PYZus{}range}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{task\PYZus{}df\PYZus{}normalized\PYZus{}range}\PY{p}{)}
 \PY{n}{scatter} \PY{o}{=} \PY{n}{data\PYZus{}scatter}\PY{p}{(}\PY{n}{task\PYZus{}df\PYZus{}normalized\PYZus{}range}\PY{p}{)}
@@ -1060,17 +1062,20 @@ supplementary functions may be found in the Applications.
 \PY{n}{sns}\PY{o}{.}\PY{n}{barplot}\PY{p}{(}\PY{n}{contibs}\PY{o}{.}\PY{n}{index}\PY{p}{,} \PY{n}{contibs}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
 \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Relative PC contribution, }\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \PY{n}{sns}\PY{o}{.}\PY{n}{barplot}\PY{p}{(}\PY{n}{contibs\PYZus{}rel}\PY{o}{.}\PY{n}{index}\PY{p}{,} \PY{n}{contibs\PYZus{}rel}\PY{o}{.}\PY{n}{values}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
+\end{Verbatim} 
+ \normalsize
 
     The results of the application of principal components are the following.
    The contributions of the components to the explanation of the variance in distribution are:
 
+    \footnotesize
 \begin{tabular}{lll}
-	\# of Component & Raw ccontribution                     & Relative contribution \\ \hline
+	\# of Component & Raw contribution                     & Relative contribution \\ \hline
 	0            & 21.672266                             & 0.545363              \\
 	1            & 11.444299                             & 0.287985              \\
 	2            & 6.622589  & 0.166651             
 \end{tabular}
+\normalsize
 
 So, the first PC explains 55\% of data scatter, the second one explains 29\%, the third one 17\%. The diagram illustrates the numbers from the table.
 
@@ -1082,9 +1087,197 @@ So, the first PC explains 55\% of data scatter, the second one explains 29\%, th
 
 We will use cluster labels from homework 1 to see how PCA helps vizualize them. So, we add the clusters (for k=5) into the set. 
 	
+We apply PCA to data with clusters centered by mean and normalized by range to show how the first two components explain the scatter.
+
+    \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{pc\PYZus{}range} \PY{o}{=} \PY{n}{PCA}\PY{p}{(}\PY{n}{n\PYZus{}components} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{)}
+\PY{n}{pca\PYZus{}result} \PY{o}{=} \PY{n}{pc\PYZus{}range}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{task\PYZus{}df\PYZus{}normalized\PYZus{}range}\PY{p}{)}
+\PY{n}{pca\PYZus{}result} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{pca\PYZus{}result}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pc1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pc2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\PY{n}{pca\PYZus{}result}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{labels\PYZus{}k5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{labels\PYZus{}k5}
+\PY{n}{fig} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+\PY{n}{sns}\PY{o}{.}\PY{n}{lmplot}\PY{p}{(}\PY{n}{x}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pc1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{y}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pc2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{fit\PYZus{}reg}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{hue}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{labels\PYZus{}k5}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{pca\PYZus{}result}\PY{p}{)}
+\end{Verbatim} 
+ \normalsize
+
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_2_4.png}
+\end{center}    
+    
+Evidently the clusters are easily separatable, except for 0 and 4, which tend to overlap with other clusters.
+
+Next we Applying PCA to data normalized by standard deviation. The code is similar, the resulting plot is as follows:
+
+   \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_2_4.png}
+\end{center}
+
+
+This one is much less descriptive, the clusters overlap alot. 
+
+Next, we apply conventional PCA to the same visualization. 
+    
+
+    \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{conv\PYZus{}pca}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{:}
+    \PY{n}{X} \PY{o}{=} \PY{n}{X} \PY{o}{\PYZhy{}} \PY{n}{X}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+
+    \PY{n}{covariance\PYZus{}matrix} \PY{o}{=} \PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{T}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+
+    \PY{n}{eigvals}\PY{p}{,} \PY{n}{eigvectors} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{eig}\PY{p}{(}\PY{n}{covariance\PYZus{}matrix}\PY{p}{)}
+    \PY{n}{order} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{eigvals}\PY{p}{)}
+    \PY{n}{ind1}\PY{p}{,} \PY{n}{ind2} \PY{o}{=} \PY{n}{order}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{:}\PY{p}{]}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{c+c1}{\PYZsh{} top 2 max eigvalues indices}
+    \PY{n}{eigvectors} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{eigvectors}\PY{o}{.}\PY{n}{T}
+    \PY{n}{pc1} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{eigvectors}\PY{p}{[}\PY{n}{ind1}\PY{p}{]}\PY{p}{)}  \PY{o}{/} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{eigvals}\PY{p}{[}\PY{n}{ind1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{n}{pc2} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{eigvectors}\PY{p}{[}\PY{n}{ind2}\PY{p}{]}\PY{p}{)}  \PY{o}{/} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{eigvals}\PY{p}{[}\PY{n}{ind2}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+    \PY{k}{return} \PY{n}{pc1}\PY{p}{,} \PY{n}{pc2}
+    
+     X = pd.DataFrame([
+         [41, 66, 90],
+         [57, 56, 60],
+         [61, 72, 79],
+         [69, 73, 72],
+         [63, 52, 88],
+         [62, 83, 80]
+     ])     
+     conv_pca(X)
+\end{Verbatim} 
+\normalsize
+
+Firstly we apply the conventional PCA to  data normalized by range:
+
+    \begin{center}
+	\adjustimage{max size={0.7\linewidth}{0.7\paperheight}}{output_14_2_4.png}
+\end{center}
+
+    Applying conventional PCA to data normalized by range yields nearly identical results to using model-based PCA. That is expected, because it is the same method. When using conventional PCA it's important to center our data (while model-based PCA can be applied to non-centered data). Here the data is centered, so we get same results.
+    
+Secondly we apply  the conventional PCA to  data normalized by standard deviation. It also gives identical results, but rotated 180 degrees: 
+
+
+ \begin{center}
+	\adjustimage{max size={0.7\linewidth}{0.7\paperheight}}{output_15_2_4.png}
+\end{center}
 
     
+    \subsection{Hidden factor analysis}
+    
+In this part we try to uncover the hidden factor behind the selected features and determine which of them contribute the most. In this function we implement applying PCA, extracting the first singular triplet and rescaling it: 
+
+    
+\footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{get\PYZus{}feature\PYZus{}weights}\PY{p}{(}\PY{n}{X}\PY{p}{)}\PY{p}{:}
+    \PY{n}{u}\PY{p}{,} \PY{n}{s}\PY{p}{,} \PY{n}{vh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linalg}\PY{o}{.}\PY{n}{svd}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+    \PY{n}{z} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{u}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+    \PY{n}{sigma} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{s}\PY{p}{)}
+    \PY{n}{c} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{vh}\PY{p}{[}\PY{p}{:}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+    \PY{n}{alpha} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{c}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+    \PY{n}{feature\PYZus{}weights} \PY{o}{=} \PY{n}{c}\PY{o}{*}\PY{n}{alpha}
+    \PY{n}{contrib} \PY{o}{=} \PY{n}{sigma}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{/} \PY{n}{data\PYZus{}scatter}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+    \PY{k}{return} \PY{n}{feature\PYZus{}weights}\PY{p}{,} \PY{n}{contrib}
+
+\PY{n}{weights}\PY{p}{,} \PY{n}{contrib} \PY{o}{=} \PY{n}{get\PYZus{}feature\PYZus{}weights}\PY{p}{(}\PY{n}{task\PYZus{}df}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{task\PYZus{}df}\PY{o}{.}\PY{n}{columns}\PY{p}{)}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{contrib}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{weights}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}\PY{o}{*}\PY{l+m+mi}{100}\PY{p}{)}
+['Body\_Count', 'IMDB\_Rating', 'Year']
+99.78585508347525 [ 3.5 96.4  0.1]
+\end{Verbatim} 
+ \normalsize
+
+So, on the 0-100 rank we obtain that the first principal  component explains 99.8\% of data scatter. The most contributing feature is IMDB\_Rating, which determines 96\% of the PC. 
+
+
+    
+    
+    
     \section{2D regression}
+
+In this part of the paper we examine the 2D regressions. First, we choose two variables to take into consideration. All the scatter-plots are presented on the picture. 
+
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_1_5.png}
+\end{center}
+
+None of these has really "linear-like" plot, but we choose Length\_Minutes and IMDB\_Rating as the best variant. First, explore closer their scatter-plot.
+
+    \begin{center}
+	\adjustimage{max size={0.7\linewidth}{0.9\paperheight}}{output_3_1_5.png}
+\end{center}
+
+Based on the visualization, we expect positive correlation here. 
+We build a regression of Length\_Minutes to IMDB\_Rating. 
+    
+    
+    \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
+ \PY{n}{training\PYZus{}x} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Length\PYZus{}Minutes}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+ \PY{n}{training\PYZus{}y} \PY{o}{=} \PY{n}{df}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{IMDB\PYZus{}Rating}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{values}
+ \PY{n}{classificator} \PY{o}{=} \PY{n}{LinearRegression}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{training\PYZus{}x}\PY{p}{,} \PY{n}{training\PYZus{}y}\PY{p}{)}
+ \PY{n}{predicted\PYZus{}y} \PY{o}{=} \PY{n}{classificator}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{training\PYZus{}x}\PY{p}{)}
+ \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{training\PYZus{}x}\PY{p}{,} \PY{n}{training\PYZus{}y}\PY{p}{)}
+ \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{training\PYZus{}x}\PY{p}{,} \PY{n}{predicted\PYZus{}y}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{black}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
+ classificator.coef_
+\end{Verbatim} 
+ \normalsize
+
+The visualization of the regression line:
+    
+    \begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_9_1_5.png}
+\end{center}
+  
+The slope of the regression is 0.0211439. That means that every minute of the film gives additional 0.02114397 to the rating. It doesn't seem much, but these 0.02 may raise the film on tens of places in the search or in the top-movies rating, as there are >5 mln movies on IMDB rated at ten-point scale.
+
+This correlation may follow the suggested hypothesis: the production of the long movie usually 
+requires a huge budget, which will be approved if the film is supposed to be good. So, long films are among the good ones.
+
+
+The determinacy coefficient and mean absolute error:
+  
+
+\footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{classificator}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{training\PYZus{}x}\PY{p}{,} \PY{n}{training\PYZus{}y}\PY{p}{)}
+{\color{outcolor}Out[{\color{outcolor}14}]:} 0.18600394479373705
+\PY{n}{mean\PYZus{}absolute\PYZus{}error}\PY{p}{(}\PY{n}{training\PYZus{}y}\PY{p}{,} \PY{n}{predicted\PYZus{}y}\PY{p}{)}
+{\color{outcolor}Out[{\color{outcolor}15}]:} 0.7823580398705626
+\end{Verbatim} 
+ \normalsize  
+  
+
+The determinacy coefficient is 0.18600394479373705, which is very low value. At the same time mean absolute error is very high. It shows that the classificator works really bad on these features. 
+
+Nevertheless, we try to predict values of the rating by the length of the movie. We take four values for the length of the movie: [80, 100, 150, 200] minutes. The predicted ratings are: [6.0716766 , 6.49455604, 7.55175466, 8.60895327].
+
+    \footnotesize    \begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{lengths\PYZus{}to\PYZus{}predict} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{90}\PY{p}{,} \PY{l+m+mi}{150}\PY{p}{]}\PY{p}{)}
+\PY{n}{prdicted\PYZus{}ratings} \PY{o}{=} \PY{n}{classificator}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{lengths\PYZus{}to\PYZus{}predict}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+
+\end{Verbatim} 
+ \normalsize
+
+
+
+The visualization among the data is the following:
+ 
+\begin{center}
+	\adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_22_1_5.png}
+\end{center}
+ 
+The predictions stay among the other points while we use the value for minutes from the same range that the sample values. 
+
+
+
+\section{Conclusion}
+
+In this project we explore the data on movies. The the first section contains the descriprion of the data and some hypothesis. In the next section we apply the clustering methods to analyze the data. The third section contains the contingency table analysis, $\chi^2$ and quetelet index. In the next we study the hidden factors by principal component analysis. Then, we use 2D regression to find some more patterns. 
+
+The main feature of the consideration was the number of on-screen deaths in the movies. The most number in our data is 836 \textit{("Lord of the Rings: Return of the King")}. 
+There are several things of great interest among the patterns and correlations that we found. The old films, which were filmed before  1980 stay aside the others  as they are mostly longer and highly-rated. Modern films, of course, have higher number of deaths. And the films with a lot of violence are rated with stronger restrictions by MPAA. 
+
+PC analysis revealed the high ability of IMDB rating to describe the other numerical features, as it is the main contributor to the first component. That shows that the ratings really reflect some important properties and summarize them.
+
+
+% To our knowledge, this paper is the most miscellaneous and contributive analysis of this dataset. Although there are a few statistical descriptions on the patterns of the set.
+
+
     
     \section{Applications}
     
