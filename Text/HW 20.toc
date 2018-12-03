@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {3.3}Chi-square \& Quetelet index }{18}{subsection.3.3}
 \contentsline {section}{\numberline {4}PCA: Hidden Factor \& Data visualization}{20}{section.4}
 \contentsline {subsection}{\numberline {4.1}Visualization}{22}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Hidden factor analysis}{25}{subsection.4.2}
-\contentsline {section}{\numberline {5}2D regression}{26}{section.5}
+\contentsline {subsection}{\numberline {4.2}Hidden factor analysis}{24}{subsection.4.2}
+\contentsline {section}{\numberline {5}2D regression}{25}{section.5}
 \contentsline {section}{\numberline {6}Conclusion}{29}{section.6}
 \contentsline {section}{\numberline {7}Applications}{30}{section.7}
